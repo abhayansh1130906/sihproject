@@ -1,0 +1,68 @@
+[
+  {
+    "role_id": "ROLE001",
+    "competency_id": "COMP021",
+    "required_level": 4,
+    "mapping_basis": "SkillIntel prototype mapping based on DIID responsibilities involving digital transformation and technology initiatives."
+  },
+  {
+    "role_id": "ROLE001",
+    "competency_id": "COMP027",
+    "required_level": 4,
+    "mapping_basis": "SkillIntel prototype mapping based on DIID responsibility for facilitating NIC Cloud Services for Ministry applications and portals."
+  },
+  {
+    "role_id": "ROLE001",
+    "competency_id": "COMP028",
+    "required_level": 4,
+    "mapping_basis": "SkillIntel prototype mapping based on DIID's documented responsibility for providing guidelines and policy input on cyber security."
+  },
+  {
+    "role_id": "ROLE001",
+    "competency_id": "COMP033",
+    "required_level": 4,
+    "mapping_basis": "SkillIntel prototype mapping based on DIID responsibility for facilitating NIC Cloud Services for hosting and maintenance of Ministry applications and portals."
+  },
+  {
+    "role_id": "ROLE001",
+    "competency_id": "COMP035",
+    "required_level": 4,
+    "mapping_basis": "SkillIntel prototype mapping based on DIID responsibilities involving digital transformation, modernization of IT architecture, and digital initiatives."
+  },
+  {
+    "role_id": "ROLE001",
+    "competency_id": "COMP016",
+    "required_level": 4,
+    "mapping_basis": "SkillIntel prototype mapping based on DIID responsibilities involving Ministry datasets, registries, and dissemination of statistical data."
+  },
+  {
+    "role_id": "ROLE001",
+    "competency_id": "COMP018",
+    "required_level": 3,
+    "mapping_basis": "SkillIntel prototype mapping based on DIID's documented responsibility for dissemination of microdata from surveys and censuses."
+  },
+  {
+    "role_id": "ROLE001",
+    "competency_id": "COMP019",
+    "required_level": 4,
+    "mapping_basis": "SkillIntel prototype mapping based on DIID responsibilities covering IT-related guidance, digital systems, and technology governance."
+  },
+  {
+    "role_id": "ROLE001",
+    "competency_id": "COMP037",
+    "required_level": 3,
+    "mapping_basis": "SkillIntel prototype mapping based on DIID responsibility for coordinating with other divisions on digital initiatives."
+  },
+  {
+    "role_id": "ROLE001",
+    "competency_id": "COMP038",
+    "required_level": 3,
+    "mapping_basis": "SkillIntel prototype mapping based on DIID responsibilities involving conceptualizing and planning divisional projects and digital initiatives."
+  },
+  {
+    "role_id": "ROLE001",
+    "competency_id": "COMP045",
+    "required_level": 4,
+    "mapping_basis": "SkillIntel prototype mapping based on DIID responsibility for coordinating digital initiatives with other divisions and relevant technology stakeholders."
+  }
+]

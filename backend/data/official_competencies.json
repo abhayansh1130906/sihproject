@@ -1,0 +1,202 @@
+[
+  {
+    "official_id": "OFF001",
+    "competency_id": "COMP016",
+    "current_level": 3,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF001",
+    "competency_id": "COMP018",
+    "current_level": 2,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF001",
+    "competency_id": "COMP019",
+    "current_level": 2,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF001",
+    "competency_id": "COMP021",
+    "current_level": 2,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF001",
+    "competency_id": "COMP027",
+    "current_level": 2,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF001",
+    "competency_id": "COMP028",
+    "current_level": 2,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF001",
+    "competency_id": "COMP033",
+    "current_level": 1,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF001",
+    "competency_id": "COMP035",
+    "current_level": 2,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF001",
+    "competency_id": "COMP037",
+    "current_level": 3,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF001",
+    "competency_id": "COMP038",
+    "current_level": 2,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF001",
+    "competency_id": "COMP045",
+    "current_level": 2,
+    "assessment_source": "Synthetic demo assessment"
+  },
+
+  {
+    "official_id": "OFF002",
+    "competency_id": "COMP016",
+    "current_level": 3,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF002",
+    "competency_id": "COMP018",
+    "current_level": 3,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF002",
+    "competency_id": "COMP019",
+    "current_level": 2,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF002",
+    "competency_id": "COMP021",
+    "current_level": 1,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF002",
+    "competency_id": "COMP027",
+    "current_level": 1,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF002",
+    "competency_id": "COMP028",
+    "current_level": 2,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF002",
+    "competency_id": "COMP033",
+    "current_level": 1,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF002",
+    "competency_id": "COMP035",
+    "current_level": 1,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF002",
+    "competency_id": "COMP037",
+    "current_level": 3,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF002",
+    "competency_id": "COMP038",
+    "current_level": 2,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF002",
+    "competency_id": "COMP045",
+    "current_level": 2,
+    "assessment_source": "Synthetic demo assessment"
+  },
+
+  {
+    "official_id": "OFF003",
+    "competency_id": "COMP016",
+    "current_level": 3,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF003",
+    "competency_id": "COMP018",
+    "current_level": 2,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF003",
+    "competency_id": "COMP019",
+    "current_level": 2,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF003",
+    "competency_id": "COMP021",
+    "current_level": 3,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF003",
+    "competency_id": "COMP027",
+    "current_level": 3,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF003",
+    "competency_id": "COMP028",
+    "current_level": 2,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF003",
+    "competency_id": "COMP033",
+    "current_level": 3,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF003",
+    "competency_id": "COMP035",
+    "current_level": 3,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF003",
+    "competency_id": "COMP037",
+    "current_level": 2,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF003",
+    "competency_id": "COMP038",
+    "current_level": 2,
+    "assessment_source": "Synthetic demo assessment"
+  },
+  {
+    "official_id": "OFF003",
+    "competency_id": "COMP045",
+    "current_level": 2,
+    "assessment_source": "Synthetic demo assessment"
+  }
+]

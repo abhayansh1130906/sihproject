@@ -1,0 +1,244 @@
+[
+  {
+    "course_id": "IGOT001",
+    "title": "Data Driven Decision Making For Government",
+    "description": "Course focused on using data to support decision-making in government.",
+    "provider": "Capacity Building Commission",
+    "duration_minutes": 150,
+    "competencies": [
+      "COMP011",
+      "COMP012"
+    ],
+    "tags": [
+      "data",
+      "data analytics",
+      "decision making",
+      "government"
+    ],
+    "target_audience": [
+      "Government officials"
+    ],
+    "learning_outcomes": [],
+    "course_type": "iGOT course",
+    "source_url": "https://www.igotkarmayogi.gov.in/",
+    "catalogue_source": "iGOT Karmayogi",
+    "verification_status": "Verified from official iGOT catalogue"
+  },
+  {
+    "course_id": "IGOT002",
+    "title": "AI Using Google Bard and ChatGPT for Beginners",
+    "description": "Introductory course on using generative AI tools including Google Bard and ChatGPT.",
+    "provider": "Invest India",
+    "duration_minutes": 25,
+    "competencies": [
+      "COMP021",
+      "COMP022"
+    ],
+    "tags": [
+      "AI",
+      "artificial intelligence",
+      "generative AI",
+      "emerging technology"
+    ],
+    "target_audience": [
+      "Government officials"
+    ],
+    "learning_outcomes": [],
+    "course_type": "iGOT course",
+    "source_url": "https://www.igotkarmayogi.gov.in/",
+    "catalogue_source": "iGOT Karmayogi",
+    "verification_status": "Verified from official iGOT catalogue"
+  },
+  {
+    "course_id": "IGOT003",
+    "title": "Microsoft Excel for Beginners",
+    "description": "Beginner-level course covering Microsoft Excel.",
+    "provider": "Microsoft",
+    "duration_minutes": 424,
+    "competencies": [
+      "COMP011",
+      "COMP012"
+    ],
+    "tags": [
+      "Excel",
+      "data",
+      "analytics",
+      "productivity"
+    ],
+    "target_audience": [
+      "Government officials"
+    ],
+    "learning_outcomes": [],
+    "course_type": "iGOT course",
+    "source_url": "https://www.igotkarmayogi.gov.in/",
+    "catalogue_source": "iGOT Karmayogi",
+    "verification_status": "Verified from official iGOT catalogue"
+  },
+  {
+    "course_id": "IGOT004",
+    "title": "Digital safety essentials",
+    "description": "Course covering essential digital safety practices.",
+    "provider": "Microsoft",
+    "duration_minutes": 75,
+    "competencies": [
+      "COMP028",
+      "COMP029"
+    ],
+    "tags": [
+      "cybersecurity",
+      "digital safety",
+      "information security"
+    ],
+    "target_audience": [
+      "Government officials"
+    ],
+    "learning_outcomes": [],
+    "course_type": "iGOT course",
+    "source_url": "https://www.igotkarmayogi.gov.in/",
+    "catalogue_source": "iGOT Karmayogi",
+    "verification_status": "Verified from official iGOT catalogue"
+  },
+  {
+    "course_id": "IGOT005",
+    "title": "Introduction: Basics of Project Management",
+    "description": "Introductory course covering basic project management concepts.",
+    "provider": "Quality Council of India",
+    "duration_minutes": 90,
+    "competencies": [
+      "COMP038"
+    ],
+    "tags": [
+      "project management",
+      "planning",
+      "management"
+    ],
+    "target_audience": [
+      "Government officials"
+    ],
+    "learning_outcomes": [],
+    "course_type": "iGOT course",
+    "source_url": "https://www.igotkarmayogi.gov.in/",
+    "catalogue_source": "iGOT Karmayogi",
+    "verification_status": "Verified from official iGOT catalogue"
+  },
+  {
+    "course_id": "IGOT006",
+    "title": "Responsible Data Management",
+    "description": "Course focused on responsible approaches to managing data.",
+    "provider": "DataDotOrg",
+    "duration_minutes": 118,
+    "competencies": [
+      "COMP016",
+      "COMP019"
+    ],
+    "tags": [
+      "data management",
+      "responsible data",
+      "data governance"
+    ],
+    "target_audience": [
+      "Government officials"
+    ],
+    "learning_outcomes": [],
+    "course_type": "iGOT course",
+    "source_url": "https://portal.igotkarmayogi.gov.in/app/toc/do_1140994741049999361127",
+    "catalogue_source": "iGOT Karmayogi",
+    "verification_status": "Verified from official iGOT course recommendation document"
+  },
+  {
+    "course_id": "IGOT007",
+    "title": "Cybersecurity",
+    "description": "Course covering cybersecurity concepts and practices.",
+    "provider": "UpGrad",
+    "duration_minutes": 176,
+    "competencies": [
+      "COMP028",
+      "COMP029",
+      "COMP030"
+    ],
+    "tags": [
+      "cybersecurity",
+      "information security",
+      "security"
+    ],
+    "target_audience": [
+      "Government officials"
+    ],
+    "learning_outcomes": [],
+    "course_type": "iGOT course",
+    "source_url": "https://portal.igotkarmayogi.gov.in/app/toc/do_11391672014338457611",
+    "catalogue_source": "iGOT Karmayogi",
+    "verification_status": "Verified from official iGOT course recommendation document"
+  },
+  {
+    "course_id": "IGOT008",
+    "title": "ChatGPT and Generative AI tools for Government Officials",
+    "description": "Course introducing ChatGPT and generative AI tools for government officials.",
+    "provider": "Wadhwani Foundation",
+    "duration_minutes": 60,
+    "competencies": [
+      "COMP021",
+      "COMP022"
+    ],
+    "tags": [
+      "AI",
+      "generative AI",
+      "ChatGPT",
+      "government"
+    ],
+    "target_audience": [
+      "Government officials"
+    ],
+    "learning_outcomes": [],
+    "course_type": "iGOT course",
+    "source_url": "https://portal.igotkarmayogi.gov.in/app/toc/do_114085865386598400145",
+    "catalogue_source": "iGOT Karmayogi",
+    "verification_status": "Verified from official iGOT course recommendation document"
+  },
+  {
+    "course_id": "IGOT009",
+    "title": "Introduction to Emerging Technologies",
+    "description": "Course introducing emerging technologies and their applications.",
+    "provider": "Wadhwani Foundation",
+    "duration_minutes": 140,
+    "competencies": [
+      "COMP022",
+      "COMP035"
+    ],
+    "tags": [
+      "emerging technology",
+      "technology",
+      "digital transformation"
+    ],
+    "target_audience": [
+      "Government officials"
+    ],
+    "learning_outcomes": [],
+    "course_type": "iGOT course",
+    "source_url": "https://portal.igotkarmayogi.gov.in/app/toc/do_1136258909109616641481",
+    "catalogue_source": "iGOT Karmayogi",
+    "verification_status": "Verified from official iGOT course recommendation document"
+  },
+  {
+    "course_id": "IGOT010",
+    "title": "Basics of Communication",
+    "description": "Course covering foundational communication concepts and practices.",
+    "provider": "IIMC",
+    "duration_minutes": 70,
+    "competencies": [
+      "COMP037"
+    ],
+    "tags": [
+      "communication",
+      "professional communication"
+    ],
+    "target_audience": [
+      "Government officials"
+    ],
+    "learning_outcomes": [],
+    "course_type": "iGOT course",
+    "source_url": "https://portal.igotkarmayogi.gov.in/app/toc/do_1141085925442682881296",
+    "catalogue_source": "iGOT Karmayogi",
+    "verification_status": "Verified from official iGOT course recommendation document"
+  }
+]

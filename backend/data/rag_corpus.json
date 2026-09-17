@@ -1,0 +1,65 @@
+[
+  {
+    "document_id": "RAG001",
+    "title": "Official Statistical System Competency Domains",
+    "content": "The SkillIntel competency framework organizes competencies relevant to India's Official Statistical System into four broad domains: Statistical, Technical, Digital Governance, and Behavioural and Managerial. Statistical competencies include areas such as survey design, sampling, national accounts, price statistics, labour statistics, agricultural statistics, industrial statistics, SDG indicators, metadata standards, and data quality frameworks. Technical competencies include programming, databases, analytics, GIS, artificial intelligence, cloud computing, and related technologies. Digital Governance competencies include cybersecurity, data privacy, digital signatures, government cloud infrastructure, and digital public infrastructure. Behavioural and Managerial competencies include leadership, communication, project management, ethics, decision making, change management, planning, problem solving, and stakeholder management.",
+    "source": "SkillIntel competency framework",
+    "source_document": "SkillIntel Competency Dataset",
+    "source_url": null,
+    "document_type": "Competency Framework"
+  },
+  {
+    "document_id": "RAG002",
+    "title": "Data Informatics and Innovation Division Responsibilities",
+    "content": "The Data Informatics and Innovation Division of the Ministry of Statistics and Programme Implementation is responsible for areas including digital transformation and modernization of IT architecture, technical inputs on hardware, software and technology stack specifications, coordination with other divisions on digital initiatives, cybersecurity-related guidelines and policy inputs, maintenance of Ministry websites and portals, dissemination of survey and census microdata, implementation of the Data Innovation-Lab component of the Capacity Development Scheme, facilitation of NIC Cloud Services for Ministry applications and portals, and publication of the Compendium of Datasets and Registries.",
+    "source": "MoSPI",
+    "source_document": "Compendium of Roles and Responsibilities of Divisions / Units of MoSPI",
+    "source_url": "https://www.mospi.gov.in/sites/default/files/Updated_Compendium_of_Roles_and_Responsibilities_of_Divisions_and_Units_MoSPI.pdf",
+    "document_type": "Role and Responsibility"
+  },
+  {
+    "document_id": "RAG003",
+    "title": "Personalized Learning and Competency Gap Analysis",
+    "content": "SkillIntel identifies competency gaps by comparing an official's current competency level with the competency level required for the official's role. The normalized SkillIntel prototype scale is used for this comparison and is not an official government rating. A competency gap is calculated as required competency level minus current competency level. Previous learning history can be considered when generating personalized recommendations so that completed or ongoing training is not unnecessarily recommended again.",
+    "source": "SkillIntel",
+    "source_document": "SkillIntel competency and recommendation design",
+    "source_url": null,
+    "document_type": "System Knowledge"
+  },
+  {
+    "document_id": "RAG004",
+    "title": "iGOT Karmayogi Learning Resources",
+    "content": "iGOT Karmayogi provides a large learning repository for government officials. SkillIntel is designed as an intelligence and recommendation layer rather than as a replacement for iGOT. The prototype can use iGOT course metadata, competency mappings, learner history, and course availability to identify learning resources relevant to an official's competency gaps.",
+    "source": "iGOT Karmayogi",
+    "source_document": "iGOT Karmayogi public learning platform",
+    "source_url": "https://www.igotkarmayogi.gov.in/",
+    "document_type": "Learning Platform"
+  },
+  {
+    "document_id": "RAG005",
+    "title": "NSSTA Training Programmes",
+    "content": "The National Statistical Systems Training Academy (NSSTA) provides training and capacity-building programmes for personnel associated with official statistics. SkillIntel can include NSSTA training programmes alongside iGOT learning resources when generating personalized learning recommendations. The prototype NSSTA dataset includes an Agriculture and Allied Statistics training item mapped to the Agricultural Statistics competency.",
+    "source": "MoSPI / NSSTA",
+    "source_document": "Training Calendar of NSSTA for FY 2021-22",
+    "source_url": "https://www.mospi.gov.in/sites/default/files/main_menu/training/Training%20Calendar%20of%20NSSTA%20for%20FY%202021-22.pdf",
+    "document_type": "Training Programme"
+  },
+  {
+    "document_id": "RAG006",
+    "title": "AI-Assisted Learning in SkillIntel",
+    "content": "SkillIntel uses AI for semantic retrieval, personalized recommendation support, virtual assistance, and generation of assessments from learning materials. Core competency-gap calculation remains deterministic rather than being delegated to a language model. The AI assistant should retrieve relevant knowledge from the available corpus before generating an answer.",
+    "source": "SkillIntel",
+    "source_document": "SkillIntel system architecture",
+    "source_url": null,
+    "document_type": "System Knowledge"
+  },
+  {
+    "document_id": "RAG007",
+    "title": "Intelligent Assessment Engine",
+    "content": "The SkillIntel Intelligent Assessment Engine is designed to generate quizzes and multiple-choice questions from uploaded learning materials. The generated questions can be evaluated automatically, with explanations and feedback provided to learners. The system can use learning material such as documents and presentations as source content for assessment generation.",
+    "source": "SkillIntel",
+    "source_document": "SkillIntel problem statement and solution design",
+    "source_url": null,
+    "document_type": "Assessment Engine"
+  }
+]
