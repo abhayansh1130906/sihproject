@@ -1,0 +1,97 @@
+[
+  {
+    "course_id": "IGOT001",
+    "competency_id": "COMP011",
+    "mapping_basis": "SkillIntel prototype mapping based on the course subject matter relating to data-driven decision making and data analytics."
+  },
+  {
+    "course_id": "IGOT001",
+    "competency_id": "COMP012",
+    "mapping_basis": "SkillIntel prototype mapping based on the course subject matter relating to data analysis and interpretation."
+  },
+  {
+    "course_id": "IGOT002",
+    "competency_id": "COMP021",
+    "mapping_basis": "SkillIntel prototype mapping based on the course subject matter covering applications of artificial intelligence and generative AI tools."
+  },
+  {
+    "course_id": "IGOT002",
+    "competency_id": "COMP022",
+    "mapping_basis": "SkillIntel prototype mapping based on the course subject matter relating to emerging artificial intelligence technology."
+  },
+  {
+    "course_id": "IGOT003",
+    "competency_id": "COMP011",
+    "mapping_basis": "SkillIntel prototype mapping based on the course subject matter involving data analysis using Microsoft Excel."
+  },
+  {
+    "course_id": "IGOT003",
+    "competency_id": "COMP012",
+    "mapping_basis": "SkillIntel prototype mapping based on the course subject matter involving analysis and handling of data."
+  },
+  {
+    "course_id": "IGOT004",
+    "competency_id": "COMP028",
+    "mapping_basis": "SkillIntel prototype mapping based on the course subject matter covering cybersecurity and digital safety."
+  },
+  {
+    "course_id": "IGOT004",
+    "competency_id": "COMP029",
+    "mapping_basis": "SkillIntel prototype mapping based on the course subject matter covering cybersecurity practices."
+  },
+  {
+    "course_id": "IGOT005",
+    "competency_id": "COMP038",
+    "mapping_basis": "SkillIntel prototype mapping based on the course subject matter covering foundational project management concepts."
+  },
+  {
+    "course_id": "IGOT006",
+    "competency_id": "COMP016",
+    "mapping_basis": "SkillIntel prototype mapping based on the course subject matter relating to responsible data management."
+  },
+  {
+    "course_id": "IGOT006",
+    "competency_id": "COMP019",
+    "mapping_basis": "SkillIntel prototype mapping based on the course subject matter relating to responsible data governance and management."
+  },
+  {
+    "course_id": "IGOT007",
+    "competency_id": "COMP028",
+    "mapping_basis": "SkillIntel prototype mapping based on the course subject matter covering cybersecurity."
+  },
+  {
+    "course_id": "IGOT007",
+    "competency_id": "COMP029",
+    "mapping_basis": "SkillIntel prototype mapping based on the course subject matter covering cybersecurity practices."
+  },
+  {
+    "course_id": "IGOT007",
+    "competency_id": "COMP030",
+    "mapping_basis": "SkillIntel prototype mapping based on the course subject matter covering information security."
+  },
+  {
+    "course_id": "IGOT008",
+    "competency_id": "COMP021",
+    "mapping_basis": "SkillIntel prototype mapping based on the course subject matter covering ChatGPT and generative artificial intelligence tools."
+  },
+  {
+    "course_id": "IGOT008",
+    "competency_id": "COMP022",
+    "mapping_basis": "SkillIntel prototype mapping based on the course subject matter covering emerging generative AI technology."
+  },
+  {
+    "course_id": "IGOT009",
+    "competency_id": "COMP022",
+    "mapping_basis": "SkillIntel prototype mapping based on the course subject matter covering emerging technologies."
+  },
+  {
+    "course_id": "IGOT009",
+    "competency_id": "COMP035",
+    "mapping_basis": "SkillIntel prototype mapping based on the course subject matter relating to technology adoption and digital transformation."
+  },
+  {
+    "course_id": "IGOT010",
+    "competency_id": "COMP037",
+    "mapping_basis": "SkillIntel prototype mapping based on the course subject matter covering foundational communication skills."
+  }
+]

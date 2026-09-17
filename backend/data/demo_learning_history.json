@@ -1,0 +1,46 @@
+[
+  {
+    "history_id": "LH001",
+    "official_id": "OFF001",
+    "learning_type": "iGOT",
+    "resource_id": "IGOT001",
+    "resource_title": "Data Driven Decision Making For Government",
+    "status": "completed",
+    "completion_date": "2026-07-15",
+    "score": 78,
+    "source_type": "Synthetic demo history"
+  },
+  {
+    "history_id": "LH002",
+    "official_id": "OFF001",
+    "learning_type": "iGOT",
+    "resource_id": "IGOT004",
+    "resource_title": "Digital safety essentials",
+    "status": "in_progress",
+    "completion_date": null,
+    "score": null,
+    "source_type": "Synthetic demo history"
+  },
+  {
+    "history_id": "LH003",
+    "official_id": "OFF002",
+    "learning_type": "iGOT",
+    "resource_id": "IGOT001",
+    "resource_title": "Data Driven Decision Making For Government",
+    "status": "completed",
+    "completion_date": "2026-06-20",
+    "score": 84,
+    "source_type": "Synthetic demo history"
+  },
+  {
+    "history_id": "LH004",
+    "official_id": "OFF003",
+    "learning_type": "iGOT",
+    "resource_id": "IGOT003",
+    "resource_title": "Microsoft Excel for Beginners",
+    "status": "completed",
+    "completion_date": "2026-08-02",
+    "score": 91,
+    "source_type": "Synthetic demo history"
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "official_id": "OFF001",
+    "name": "Aarav Sharma",
+    "designation": "Deputy Director",
+    "department": "Ministry of Statistics and Programme Implementation",
+    "division": "Data Informatics and Innovation Division",
+    "current_assignment": "Supporting digital transformation and data-system initiatives",
+    "education": "Postgraduate degree in Statistics",
+    "experience_years": 8,
+    "previous_trainings": [
+      "Official Statistics Orientation",
+      "Data Analysis Fundamentals"
+    ],
+    "profile_type": "Synthetic demo profile"
+  },
+  {
+    "official_id": "OFF002",
+    "name": "Priya Mehta",
+    "designation": "Statistical Officer",
+    "department": "Ministry of Statistics and Programme Implementation",
+    "division": "Data Informatics and Innovation Division",
+    "current_assignment": "Supporting statistical data processing and dissemination",
+    "education": "Postgraduate degree in Statistics",
+    "experience_years": 5,
+    "previous_trainings": [
+      "Survey Methodology",
+      "Statistical Computing"
+    ],
+    "profile_type": "Synthetic demo profile"
+  },
+  {
+    "official_id": "OFF003",
+    "name": "Rahul Verma",
+    "designation": "Assistant Director",
+    "department": "Ministry of Statistics and Programme Implementation",
+    "division": "Data Informatics and Innovation Division",
+    "current_assignment": "Supporting data analytics and digital technology initiatives",
+    "education": "Postgraduate degree in Computer Science",
+    "experience_years": 4,
+    "previous_trainings": [
+      "Data Analytics",
+      "Information Technology Fundamentals"
+    ],
+    "profile_type": "Synthetic demo profile"
+  }
+]

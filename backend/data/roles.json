@@ -1,0 +1,24 @@
+[
+  {
+    "role_id": "ROLE001",
+    "role_name": "Data Informatics and Innovation Division",
+    "role_type": "Division / Unit",
+    "department": "Ministry of Statistics and Programme Implementation",
+    "division": "Data Informatics and Innovation Division (DIID)",
+    "responsibilities": [
+      "Formulating the overarching framework for digital transformation of MoSPI, including modernization of IT architecture.",
+      "Providing technical inputs and advice on hardware, software and technology stack specifications and on conceptualizing and planning divisional projects.",
+      "Coordinating with other divisions on digital initiatives.",
+      "Providing guidelines and policy input on cyber security and related issues.",
+      "Design, development, updation and maintenance of the Ministry's website.",
+      "Maintenance and updation of e-Sankhyiki Portal and CPI Portal.",
+      "Dissemination of microdata of surveys and census conducted by the Ministry.",
+      "Implementation of the Data Innovation-Lab component of the Capacity Development Scheme.",
+      "Facilitating NIC Cloud Services for hosting and maintenance of Ministry applications and portals.",
+      "Publication of the Compendium of Datasets and Registries."
+    ],
+    "source": "MoSPI",
+    "source_document": "Compendium of Roles and Responsibilities of Divisions / Units of MoSPI",
+    "source_url": "https://www.mospi.gov.in/sites/default/files/Updated_Compendium_of_Roles_and_Responsibilities_of_Divisions_and_Units_MoSPI.pdf"
+  }
+]
