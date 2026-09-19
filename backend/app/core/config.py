@@ -6,6 +6,7 @@ class Settings(BaseSettings):
     app_version: str = "1.0.0"
     database_url: str
     secret_key: str
+    groq_api_key: str
 
     class Config:
         env_file = ".env"
