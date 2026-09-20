@@ -3,7 +3,9 @@
     "training_id": "NSSTA001",
     "title": "Agriculture and Allied Statistics",
     "category": "Statistical",
-    "target_audience": "Indian Statistical Service probationers and statistical personnel",
+    "target_audience": [
+    "Indian Statistical Service probationers and statistical personnel"
+    ],
     "topic": "Agricultural Statistics",
     "duration": null,
     "year": null,

@@ -1,6 +1,7 @@
 [
   {
     "official_id": "OFF001",
+    "role_id": "ROLE001",
     "name": "Aarav Sharma",
     "designation": "Deputy Director",
     "department": "Ministry of Statistics and Programme Implementation",
@@ -16,6 +17,7 @@
   },
   {
     "official_id": "OFF002",
+    "role_id": "ROLE001",
     "name": "Priya Mehta",
     "designation": "Statistical Officer",
     "department": "Ministry of Statistics and Programme Implementation",
@@ -31,6 +33,7 @@
   },
   {
     "official_id": "OFF003",
+    "role_id": "ROLE001",
     "name": "Rahul Verma",
     "designation": "Assistant Director",
     "department": "Ministry of Statistics and Programme Implementation",
