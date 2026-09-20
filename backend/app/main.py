@@ -8,6 +8,7 @@ from app.api.v1.training_programmes import (
 )
 from app.api.v1.assessments import router as assessments_router
 from app.api.v1.assistant import router as assistant_router
+from app.api.v1 import auth
 
 app = FastAPI(
     title="SkillIntel API",
@@ -21,6 +22,7 @@ app.include_router(courses_router)
 app.include_router(training_programmes_router)
 app.include_router(assessments_router)
 app.include_router(assistant_router)
+app.include_router(auth.router)
 
 @app.get("/")
 def root():

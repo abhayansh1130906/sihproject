@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     database_url: str
     secret_key: str
     groq_api_key: str
+    demo_login_password: str
 
     class Config:
         env_file = ".env"
