@@ -319,7 +319,7 @@ export default function DashboardPage() {
           <div className="bg-white p-4 rounded-xl border border-slate-200/90 shadow-2xs">
             <div className="flex items-center justify-between text-slate-500">
               <span className="text-[11px] font-bold uppercase tracking-wider">
-                Cadre Readiness
+                Competencies Meeting Target
               </span>
               <Shield className="w-4 h-4 text-emerald-600" />
             </div>
@@ -333,7 +333,7 @@ export default function DashboardPage() {
                 : "100%"}
             </div>
             <span className="text-[11px] text-slate-500 mt-1 block">
-              FRAC alignment index
+              Competencies with no detected gap
             </span>
           </div>
         </div>
@@ -398,16 +398,11 @@ export default function DashboardPage() {
                       Current Level
                     </span>
                   </div>
+
                   <div className="flex items-center gap-1.5">
-                    <span className="w-3.5 h-3.5 rounded bg-[#002045]"></span>
+                    <span className="w-1 h-4 rounded bg-[#002045]"></span>
                     <span className="font-medium text-slate-700">
-                      Required Level
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-3.5 h-3.5 rounded bg-rose-500"></span>
-                    <span className="font-medium text-slate-700">
-                      Gap (Δ)
+                      Required Level (Target)
                     </span>
                   </div>
                 </div>
@@ -466,25 +461,22 @@ export default function DashboardPage() {
                         </div>
                       </div>
 
-                      {/* Multi-tier Progress Bar */}
-                      <div className="relative w-full h-3 bg-slate-200 rounded-full overflow-hidden">
-                        {/* Required Level Mark Bar (Full span up to required) */}
+                      {/* Current Level + Required Level Target */}
+                      <div className="relative w-full h-3 bg-slate-200 rounded-full">
+                        {/* Current Level Fill */}
                         <div
-                          className="absolute top-0 left-0 h-full bg-[#002045]/20"
-                          style={{ width: `${requiredPercent}%` }}
-                        />
-                        {/* Current Level Fill (Teal) */}
-                        <div
-                          className="absolute top-0 left-0 h-full bg-[#006a61] rounded-l-full transition-all duration-500"
+                          className="absolute top-0 left-0 h-full bg-[#006a61] rounded-full transition-all duration-500"
                           style={{ width: `${currentPercent}%` }}
                         />
-                        {/* Gap Fill (Rose striped) */}
+
+                        {/* Required Level Target Marker */}
                         <div
-                          className="absolute top-0 h-full bg-rose-500 transition-all duration-500"
+                          className="absolute top-[-4px] h-5 w-1 rounded-full bg-[#002045] shadow-sm transition-all duration-500"
                           style={{
-                            left: `${currentPercent}%`,
-                            width: `${requiredPercent - currentPercent}%`,
+                            left: `${requiredPercent}%`,
+                            transform: "translateX(-50%)",
                           }}
+                          aria-label={`Required level ${gapItem.required_level} of 5`}
                         />
                       </div>
 
