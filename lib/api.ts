@@ -16,6 +16,8 @@ import {
   CompetencyItem,
   AssessmentCreateRequest,
   GenerateQuizRequest,
+  CourseResponse,
+  TrainingProgrammeResponse,
 } from "./types";
 
 const API_BASE_URL =
@@ -90,6 +92,9 @@ export const api = {
     }),
 
   // Officials & Dashboard
+  getAllOfficials: (): Promise<OfficialResponse[]> =>
+    request<OfficialResponse[]>("/api/v1/officials"),
+
   getOfficialProfile: (officialId: string): Promise<OfficialResponse> =>
     request<OfficialResponse>(`/api/v1/officials/${officialId}`),
 
@@ -136,9 +141,15 @@ export const api = {
       body: JSON.stringify(data),
     }),
 
-  // Competencies
+  // Catalogues & Courses
   getCompetencies: (): Promise<CompetencyItem[]> =>
     request<CompetencyItem[]>("/api/v1/competencies"),
+
+  getCourses: (): Promise<CourseResponse[]> =>
+    request<CourseResponse[]>("/api/v1/courses"),
+
+  getTrainingProgrammes: (): Promise<TrainingProgrammeResponse[]> =>
+    request<TrainingProgrammeResponse[]>("/api/v1/training-programmes"),
 
   // Assessments
   getAssessments: (): Promise<AssessmentResponse[]> =>

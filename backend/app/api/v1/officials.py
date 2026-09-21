@@ -157,15 +157,6 @@ def recommendations(
 
     return result
 
-@router.get(
-    "",
-    response_model=list[OfficialResponse]
-)
-def get_officials(
-    db: Session = Depends(get_db)
-):
-    return db.query(Official).all()
-
 @router.post(
     "/{official_id}/learning-history",
     response_model=LearningHistoryResponse,

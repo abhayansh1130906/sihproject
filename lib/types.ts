@@ -178,3 +178,40 @@ export interface GenerateQuizRequest {
   difficulty?: string;
   study_material?: string;
 }
+
+// Learning Catalogues
+export interface CourseResponse {
+  course_id: string;
+  title: string;
+  description: string;
+  provider: string;
+  duration_minutes: number | null;
+  tags: string[];
+  target_audience: string[];
+  learning_outcomes: string[];
+  course_type: string;
+  source_url: string | null;
+  catalogue_source: string;
+  verification_status: string;
+}
+
+export interface TrainingProgrammeResponse {
+  training_id: string;
+  title: string;
+  category: string;
+  target_audience: string[];
+  topic: string;
+  duration: number | null;
+  year: number | null;
+  provider: string;
+  source_document: string;
+  source_url: string | null;
+}
+
+// Admin Session
+export interface AdminAuthSession {
+  username: string;
+  role: string;
+  authenticatedAt: string;
+}
+
