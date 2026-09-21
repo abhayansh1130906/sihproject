@@ -139,3 +139,42 @@ export interface AssessmentAttemptResponse {
   started_at: string;
   completed_at: string | null;
 }
+
+export interface CompetencyItem {
+  competency_id: string;
+  name: string;
+  domain: string;
+  competency_type: string;
+  description: string;
+}
+
+export interface QuestionOptionCreateRequest {
+  option_text: string;
+  is_correct: boolean;
+}
+
+export interface QuestionCreateRequest {
+  question_text: string;
+  explanation?: string;
+  question_type?: string;
+  marks?: number;
+  options: QuestionOptionCreateRequest[];
+}
+
+export interface AssessmentCreateRequest {
+  title: string;
+  description: string;
+  competency_id: string;
+  source_type?: string;
+  source_reference?: string | null;
+  passing_score?: number;
+  questions: QuestionCreateRequest[];
+}
+
+export interface GenerateQuizRequest {
+  competency_id: string;
+  topic?: string;
+  num_questions?: number;
+  difficulty?: string;
+  study_material?: string;
+}

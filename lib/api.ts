@@ -13,6 +13,9 @@ import {
   QuestionResponse,
   AssessmentAttemptRequest,
   AssessmentAttemptResponse,
+  CompetencyItem,
+  AssessmentCreateRequest,
+  GenerateQuizRequest,
 } from "./types";
 
 const API_BASE_URL =
@@ -33,9 +36,12 @@ async function request<T>(
 ): Promise<T> {
   const url = `${API_BASE_URL}${endpoint}`;
   const headers: Record<string, string> = {
-    "Content-Type": "application/json",
     ...(options.headers as Record<string, string>),
   };
+
+  if (!(options.body instanceof FormData)) {
+    headers["Content-Type"] = "application/json";
+  }
 
   try {
     const res = await fetch(url, {
@@ -130,6 +136,10 @@ export const api = {
       body: JSON.stringify(data),
     }),
 
+  // Competencies
+  getCompetencies: (): Promise<CompetencyItem[]> =>
+    request<CompetencyItem[]>("/api/v1/competencies"),
+
   // Assessments
   getAssessments: (): Promise<AssessmentResponse[]> =>
     request<AssessmentResponse[]>("/api/v1/assessments"),
@@ -139,6 +149,40 @@ export const api = {
 
   getAssessmentQuestions: (assessmentId: string): Promise<QuestionResponse[]> =>
     request<QuestionResponse[]>(`/api/v1/assessments/${assessmentId}/questions`),
+
+  generateAssessment: (
+    data: GenerateQuizRequest
+  ): Promise<AssessmentResponse> =>
+    request<AssessmentResponse>("/api/v1/assessments/generate", {
+      method: "POST",
+      body: JSON.stringify(data),
+    }),
+
+  generateAssessmentFromPdf: (
+    formData: FormData
+  ): Promise<AssessmentResponse> =>
+    request<AssessmentResponse>("/api/v1/assessments/generate-from-pdf", {
+      method: "POST",
+      body: formData,
+    }),
+
+  uploadAssessment: (
+    data: AssessmentCreateRequest
+  ): Promise<AssessmentResponse> =>
+    request<AssessmentResponse>("/api/v1/assessments/upload", {
+      method: "POST",
+      body: JSON.stringify(data),
+    }),
+
+  deleteAssessment: (
+    assessmentId: string
+  ): Promise<{ message: string; assessment_id: string }> =>
+    request<{ message: string; assessment_id: string }>(
+      `/api/v1/assessments/${assessmentId}`,
+      {
+        method: "DELETE",
+      }
+    ),
 
   submitAssessmentAttempt: (
     assessmentId: string,
