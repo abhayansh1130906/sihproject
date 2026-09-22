@@ -17,6 +17,9 @@ import {
   Building2,
   UserCheck,
   ChevronRight,
+  ChevronLeft,
+  PanelLeftClose,
+  PanelLeftOpen,
   ExternalLink,
 } from "lucide-react";
 
@@ -35,7 +38,7 @@ const NAV_ITEMS = [
     href: "/recommendations",
     label: "Recommendations",
     icon: Sparkles,
-    badge: "AI Powered",
+    badge: null,
   },
   {
     href: "/learning-history",
@@ -47,7 +50,7 @@ const NAV_ITEMS = [
     href: "/assistant",
     label: "AI Assistant",
     icon: Bot,
-    badge: "RAG",
+    badge: null,
   },
   {
     href: "/assessments",
@@ -62,6 +65,31 @@ export default function AppShell({ children }: AppShellProps) {
   const pathname = usePathname();
   const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
+  // Load saved collapse state
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("skillintel_sidebar_collapsed");
+      if (saved !== null) {
+        setIsCollapsed(saved === "true");
+      }
+    } catch {
+      // Ignore in restricted environments
+    }
+  }, []);
+
+  const toggleCollapse = () => {
+    setIsCollapsed((prev) => {
+      const next = !prev;
+      try {
+        localStorage.setItem("skillintel_sidebar_collapsed", String(next));
+      } catch {
+        // Ignore
+      }
+      return next;
+    });
+  };
 
   // Protected route check
   useEffect(() => {
@@ -101,52 +129,97 @@ export default function AppShell({ children }: AppShellProps) {
 
       <div className="flex flex-1 relative">
         {/* Desktop Sidebar */}
-        <aside className="hidden lg:flex w-64 bg-white border-r border-slate-200/80 flex-col justify-between fixed top-7 bottom-0 left-0 z-30 shadow-xs">
+        <aside
+          className={`hidden lg:flex flex-col justify-between fixed top-7 bottom-0 left-0 z-30 bg-white border-r border-slate-200/80 shadow-xs transition-all duration-300 ease-in-out ${
+            isCollapsed ? "w-20" : "w-64"
+          }`}
+        >
           <div className="flex flex-col">
             {/* Brand Logo Header */}
-            <div className="h-20 px-5 flex items-center gap-3 border-b border-slate-100">
-              <div className="w-10 h-10 rounded-lg bg-[#002045] flex items-center justify-center text-white shadow-xs">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 48 48"
-                  fill="none"
-                  className="w-7 h-7"
+            <div
+              className={`h-20 flex items-center border-b border-slate-100 transition-all duration-300 ${
+                isCollapsed ? "justify-center px-3" : "justify-between px-5"
+              }`}
+            >
+              <div className="flex items-center gap-3 overflow-hidden">
+                <div
+                  className="w-10 h-10 rounded-lg bg-[#002045] flex items-center justify-center text-white shadow-xs shrink-0 cursor-pointer"
+                  onClick={toggleCollapse}
+                  title={isCollapsed ? "Expand Sidebar" : "SkillIntel MoSPI"}
                 >
-                  <path
-                    d="M14 36V28M20 36V22M26 36V16M32 36V24M38 36V20"
-                    stroke="#38BDF8"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                  />
-                  <circle cx="26" cy="16" r="3" fill="#F59E0B" />
-                  <path
-                    d="M14 28L20 22L26 16L32 24L38 20"
-                    stroke="#10B981"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 48 48"
+                    fill="none"
+                    className="w-7 h-7"
+                  >
+                    <path
+                      d="M14 36V28M20 36V22M26 36V16M32 36V24M38 36V20"
+                      stroke="#38BDF8"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                    />
+                    <circle cx="26" cy="16" r="3" fill="#F59E0B" />
+                    <path
+                      d="M14 28L20 22L26 16L32 24L38 20"
+                      stroke="#10B981"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+                {!isCollapsed && (
+                  <div className="flex flex-col overflow-hidden whitespace-nowrap animate-in fade-in duration-200">
+                    <span className="font-bold text-lg tracking-tight text-[#002045] leading-tight">
+                      SkillIntel
+                    </span>
+                    <span className="text-[10px] font-semibold text-[#006a61] tracking-wider uppercase">
+                      MoSPI GovTech
+                    </span>
+                  </div>
+                )}
               </div>
-              <div className="flex flex-col">
-                <span className="font-bold text-lg tracking-tight text-[#002045] leading-tight">
-                  SkillIntel
-                </span>
-                <span className="text-[10px] font-semibold text-[#006a61] tracking-wider uppercase">
-                  MoSPI GovTech
-                </span>
-              </div>
+
+              {!isCollapsed && (
+                <button
+                  onClick={toggleCollapse}
+                  className="p-1.5 rounded-md text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
+                  title="Collapse Sidebar"
+                  aria-label="Collapse Sidebar"
+                >
+                  <PanelLeftClose className="w-4 h-4" />
+                </button>
+              )}
             </div>
+
+            {/* Expand Button under Logo when Collapsed */}
+            {isCollapsed && (
+              <div className="flex justify-center py-2 border-b border-slate-100/80 bg-slate-50/50">
+                <button
+                  onClick={toggleCollapse}
+                  className="p-1.5 rounded-md text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors cursor-pointer"
+                  title="Expand Sidebar"
+                  aria-label="Expand Sidebar"
+                >
+                  <PanelLeftOpen className="w-4 h-4" />
+                </button>
+              </div>
+            )}
 
             {/* Nav Group Title */}
-            <div className="px-5 pt-4 pb-2">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600">
-                Civil Cadre Systems
-              </span>
-            </div>
+            {!isCollapsed ? (
+              <div className="px-5 pt-4 pb-2 animate-in fade-in duration-200">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                  Civil Cadre Systems
+                </span>
+              </div>
+            ) : (
+              <div className="w-8 h-px bg-slate-200/80 mx-auto my-3" />
+            )}
 
             {/* Navigation Links */}
-            <nav className="px-3 flex flex-col gap-1">
+            <nav className={`flex flex-col gap-1 ${isCollapsed ? "px-2" : "px-3"}`}>
               {NAV_ITEMS.map((item) => {
                 const isActive = pathname === item.href;
                 const Icon = item.icon;
@@ -154,21 +227,30 @@ export default function AppShell({ children }: AppShellProps) {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`flex items-center justify-between px-3.5 py-2.5 rounded-md text-xs font-semibold transition-all ${
+                    title={isCollapsed ? item.label : undefined}
+                    className={`flex items-center rounded-md text-xs font-semibold transition-all ${
+                      isCollapsed
+                        ? "justify-center py-3 px-2"
+                        : "justify-between px-3.5 py-2.5"
+                    } ${
                       isActive
                         ? "bg-[#002045] text-white shadow-xs"
                         : "text-slate-600 hover:bg-slate-100/80 hover:text-slate-900"
                     }`}
                   >
-                    <div className="flex items-center gap-3">
+                    <div className={`flex items-center ${isCollapsed ? "justify-center" : "gap-3"}`}>
                       <Icon
-                        className={`w-4 h-4 ${
+                        className={`${isCollapsed ? "w-5 h-5" : "w-4 h-4"} shrink-0 ${
                           isActive ? "text-[#86f2e4]" : "text-slate-600"
                         }`}
                       />
-                      <span>{item.label}</span>
+                      {!isCollapsed && (
+                        <span className="whitespace-nowrap animate-in fade-in duration-200">
+                          {item.label}
+                        </span>
+                      )}
                     </div>
-                    {item.badge && (
+                    {!isCollapsed && item.badge && (
                       <span
                         className={`text-[9px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wider ${
                           isActive
@@ -186,28 +268,55 @@ export default function AppShell({ children }: AppShellProps) {
           </div>
 
           {/* Bottom Sidebar Footer */}
-          <div className="p-4 border-t border-slate-100 bg-[#f8f9ff]/70 flex flex-col gap-2.5">
-            <div className="flex items-center justify-between text-xs">
-              <span className="text-[11px] font-medium text-slate-500">
-                iGOT Sync Status
-              </span>
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-[#006a61]">
-                <span className="w-2 h-2 rounded-full bg-[#006a61] animate-pulse"></span>
-                Active
-              </span>
+          {isCollapsed ? (
+            <div className="p-3 border-t border-slate-100 bg-[#f8f9ff]/70 flex flex-col items-center gap-3">
+              <div
+                className="w-2.5 h-2.5 rounded-full bg-[#006a61] animate-pulse cursor-pointer"
+                title="iGOT Sync Status: Active"
+              />
+              <div
+                className="w-8 h-8 rounded-full bg-[#002045] text-white text-xs font-bold flex items-center justify-center cursor-pointer shadow-2xs"
+                title={`${official?.name || "Officer"} (ID: ${official?.official_id || ""}, Role: ${official?.role_id || ""})`}
+              >
+                {official?.name ? official.name.charAt(0) : "O"}
+              </div>
+              <button
+                onClick={handleLogout}
+                className="p-2 text-red-600 hover:text-red-700 hover:bg-red-50/80 rounded transition-colors cursor-pointer"
+                title="Sign Out"
+                aria-label="Sign Out"
+              >
+                <LogOut className="w-4 h-4" />
+              </button>
             </div>
-            <div className="text-[10px] text-slate-600 flex items-center justify-between border-t border-slate-200/60 pt-2">
-              <span>Cadre ID: <strong className="text-slate-700">{official?.official_id}</strong></span>
-              <span>Role: <strong className="text-slate-700">{official?.role_id}</strong></span>
+          ) : (
+            <div className="p-4 border-t border-slate-100 bg-[#f8f9ff]/70 flex flex-col gap-2.5 animate-in fade-in duration-200">
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-[11px] font-medium text-slate-500">
+                  iGOT Sync Status
+                </span>
+                <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-[#006a61]">
+                  <span className="w-2 h-2 rounded-full bg-[#006a61] animate-pulse"></span>
+                  Active
+                </span>
+              </div>
+              <div className="text-[10px] text-slate-600 flex items-center justify-between border-t border-slate-200/60 pt-2">
+                <span>
+                  Cadre ID: <strong className="text-slate-700">{official?.official_id}</strong>
+                </span>
+                <span>
+                  Role: <strong className="text-slate-700">{official?.role_id}</strong>
+                </span>
+              </div>
+              <button
+                onClick={handleLogout}
+                className="mt-1 w-full flex items-center justify-center gap-1.5 text-xs text-red-600 hover:text-red-700 hover:bg-red-50/80 py-1.5 rounded transition-colors font-medium cursor-pointer"
+              >
+                <LogOut className="w-3.5 h-3.5" />
+                Sign Out
+              </button>
             </div>
-            <button
-              onClick={handleLogout}
-              className="mt-1 w-full flex items-center justify-center gap-1.5 text-xs text-red-600 hover:text-red-700 hover:bg-red-50/80 py-1.5 rounded transition-colors font-medium cursor-pointer"
-            >
-              <LogOut className="w-3.5 h-3.5" />
-              Sign Out
-            </button>
-          </div>
+          )}
         </aside>
 
         {/* Mobile Sidebar Overlay */}
@@ -276,7 +385,11 @@ export default function AppShell({ children }: AppShellProps) {
         )}
 
         {/* Main Workspace Area */}
-        <div className="flex-1 lg:pl-64 flex flex-col min-h-[calc(100vh-28px)]">
+        <div
+          className={`flex-1 flex flex-col min-h-[calc(100vh-28px)] transition-all duration-300 ease-in-out ${
+            isCollapsed ? "lg:pl-20" : "lg:pl-64"
+          }`}
+        >
           {/* Top Header Bar */}
           <header className="h-16 bg-white border-b border-slate-200/80 px-4 sm:px-6 flex items-center justify-between sticky top-7 z-20 shadow-xs">
             <div className="flex items-center gap-3">
@@ -286,6 +399,20 @@ export default function AppShell({ children }: AppShellProps) {
                 aria-label="Open Navigation"
               >
                 <Menu className="w-5 h-5" />
+              </button>
+
+              {/* Desktop Sidebar Toggle Button */}
+              <button
+                onClick={toggleCollapse}
+                className="hidden lg:flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors cursor-pointer"
+                title={isCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
+                aria-label={isCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
+              >
+                {isCollapsed ? (
+                  <PanelLeftOpen className="w-4 h-4" />
+                ) : (
+                  <PanelLeftClose className="w-4 h-4" />
+                )}
               </button>
 
               <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
