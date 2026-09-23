@@ -396,7 +396,7 @@ export default function AdminDashboardPage() {
   // VIEW 2: AUTHENTICATED CADRE ADMIN CONSOLE
   // =========================================================================
   return (
-    <div className="min-h-screen bg-[#f8f9ff] text-slate-900 flex flex-col">
+    <div className="min-h-screen bg-[#f8f9ff] dark:bg-[#090d16] text-slate-900 dark:text-slate-100 flex flex-col transition-colors">
       {/* Top Ministry Banner */}
       <div className="bg-[#001b3c] text-slate-200 text-xs py-1.5 px-4 sm:px-8 border-b border-blue-950 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <div className="flex items-center gap-2 font-medium">
@@ -412,7 +412,7 @@ export default function AdminDashboardPage() {
       </div>
 
       {/* Main Admin Navigation Bar */}
-      <header className="bg-white border-b border-slate-200/80 sticky top-0 z-30 shadow-2xs">
+      <header className="bg-white dark:bg-[#0b1329] border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-30 shadow-2xs transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-[#002045] text-white flex items-center justify-center font-bold text-lg shadow-xs">
@@ -420,14 +420,14 @@ export default function AdminDashboardPage() {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-base font-bold text-[#002045] tracking-tight">
+                <span className="text-base font-bold text-[#002045] dark:text-blue-400 tracking-tight">
                   SkillIntel Admin
                 </span>
-                <span className="px-2 py-0.5 rounded-md bg-[#eff4ff] text-[#002045] border border-[#dce9ff] text-[10px] font-extrabold uppercase">
+                <span className="px-2 py-0.5 rounded-md bg-[#eff4ff] dark:bg-blue-950/60 text-[#002045] dark:text-blue-300 border border-[#dce9ff] dark:border-blue-900/50 text-[10px] font-extrabold uppercase">
                   Cadre Console
                 </span>
               </div>
-              <p className="text-[11px] text-slate-500 leading-tight">
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">
                 Ministry of Statistics & Programme Implementation
               </p>
             </div>
@@ -437,7 +437,7 @@ export default function AdminDashboardPage() {
             <button
               onClick={fetchCadreData}
               disabled={loadingData}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors shadow-2xs cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors shadow-2xs cursor-pointer"
               title="Refresh all metrics from FastAPI backend"
             >
               <RefreshCw className={`w-3.5 h-3.5 ${loadingData ? "animate-spin" : ""}`} />
@@ -446,16 +446,16 @@ export default function AdminDashboardPage() {
 
             <button
               onClick={handleExportCSV}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 border border-emerald-200 dark:border-emerald-800/60 rounded-lg transition-colors cursor-pointer"
               title="Download Cadre Audit Report as CSV"
             >
-              <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-700" />
+              <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
               <span className="hidden sm:inline">Export Audit CSV</span>
             </button>
 
             <Link
               href="/dashboard"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-[#002045] bg-[#eff4ff] hover:bg-[#dce9ff] border border-[#dce9ff] rounded-lg transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-[#002045] dark:text-blue-300 bg-[#eff4ff] dark:bg-blue-950/60 hover:bg-[#dce9ff] dark:hover:bg-blue-900/80 border border-[#dce9ff] dark:border-blue-900/50 rounded-lg transition-colors"
             >
               <UserCheck className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Officer View</span>
@@ -463,7 +463,7 @@ export default function AdminDashboardPage() {
 
             <button
               onClick={logoutAdmin}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-red-700 bg-red-50 hover:bg-red-100 border border-red-200 rounded-lg transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-red-700 dark:text-red-300 bg-red-50 dark:bg-red-950/40 hover:bg-red-100 dark:hover:bg-red-900/60 border border-red-200 dark:border-red-800/60 rounded-lg transition-colors cursor-pointer"
             >
               <LogOut className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Sign Out</span>
@@ -498,90 +498,90 @@ export default function AdminDashboardPage() {
 
         {/* 1. Ministry-Wide KPI Grid */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-          <div className="bg-white p-5 rounded-xl border border-slate-200/90 shadow-2xs flex flex-col justify-between">
+          <div className="bg-white dark:bg-[#0f172a] p-5 rounded-xl border border-slate-200/90 dark:border-slate-800 shadow-2xs flex flex-col justify-between">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Officials Tracked
               </span>
-              <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 flex items-center justify-center">
                 <Users className="w-4 h-4" />
               </div>
             </div>
             <div className="mt-3">
-              <span className="text-2xl font-black text-slate-900">{officials.length}</span>
-              <p className="text-[11px] text-slate-500 mt-0.5">ISS / SSS Officers</p>
+              <span className="text-2xl font-black text-slate-900 dark:text-white">{officials.length}</span>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">ISS / SSS Officers</p>
             </div>
           </div>
 
-          <div className="bg-white p-5 rounded-xl border border-slate-200/90 shadow-2xs flex flex-col justify-between">
+          <div className="bg-white dark:bg-[#0f172a] p-5 rounded-xl border border-slate-200/90 dark:border-slate-800 shadow-2xs flex flex-col justify-between">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Competencies
               </span>
-              <div className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 flex items-center justify-center">
                 <Layers className="w-4 h-4" />
               </div>
             </div>
             <div className="mt-3">
-              <span className="text-2xl font-black text-slate-900">{competencies.length}</span>
-              <p className="text-[11px] text-slate-500 mt-0.5">FRAC Framework Matrix</p>
+              <span className="text-2xl font-black text-slate-900 dark:text-white">{competencies.length}</span>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">FRAC Framework Matrix</p>
             </div>
           </div>
 
-          <div className="bg-white p-5 rounded-xl border border-slate-200/90 shadow-2xs flex flex-col justify-between">
+          <div className="bg-white dark:bg-[#0f172a] p-5 rounded-xl border border-slate-200/90 dark:border-slate-800 shadow-2xs flex flex-col justify-between">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 iGOT Courses
               </span>
-              <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 flex items-center justify-center">
                 <BookOpen className="w-4 h-4" />
               </div>
             </div>
             <div className="mt-3">
-              <span className="text-2xl font-black text-slate-900">{courses.length}</span>
-              <p className="text-[11px] text-slate-500 mt-0.5">Digital Learning Units</p>
+              <span className="text-2xl font-black text-slate-900 dark:text-white">{courses.length}</span>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Digital Learning Units</p>
             </div>
           </div>
 
-          <div className="bg-white p-5 rounded-xl border border-slate-200/90 shadow-2xs flex flex-col justify-between">
+          <div className="bg-white dark:bg-[#0f172a] p-5 rounded-xl border border-slate-200/90 dark:border-slate-800 shadow-2xs flex flex-col justify-between">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 NSSTA Programmes
               </span>
-              <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 flex items-center justify-center">
                 <GraduationCap className="w-4 h-4" />
               </div>
             </div>
             <div className="mt-3">
-              <span className="text-2xl font-black text-slate-900">{trainings.length}</span>
-              <p className="text-[11px] text-slate-500 mt-0.5">Academy Trainings</p>
+              <span className="text-2xl font-black text-slate-900 dark:text-white">{trainings.length}</span>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Academy Trainings</p>
             </div>
           </div>
 
-          <div className="bg-white p-5 rounded-xl border border-slate-200/90 shadow-2xs flex flex-col justify-between col-span-2 md:col-span-1">
+          <div className="bg-white dark:bg-[#0f172a] p-5 rounded-xl border border-slate-200/90 dark:border-slate-800 shadow-2xs flex flex-col justify-between col-span-2 md:col-span-1">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Assessments
               </span>
-              <div className="w-8 h-8 rounded-lg bg-purple-50 text-purple-700 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-purple-50 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 flex items-center justify-center">
                 <FileCheck2 className="w-4 h-4" />
               </div>
             </div>
             <div className="mt-3">
-              <span className="text-2xl font-black text-slate-900">{assessments.length}</span>
-              <p className="text-[11px] text-slate-500 mt-0.5">Active Quizzes & Tests</p>
+              <span className="text-2xl font-black text-slate-900 dark:text-white">{assessments.length}</span>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Active Quizzes & Tests</p>
             </div>
           </div>
         </div>
 
         {/* 2. Primary Tabs */}
-        <div className="border-b border-slate-200 flex items-center gap-8">
+        <div className="border-b border-slate-200 dark:border-slate-800 flex items-center gap-8">
           <button
             onClick={() => setActiveTab("officials")}
             className={`pb-3 text-sm font-bold border-b-2 transition-all flex items-center gap-2 cursor-pointer ${
               activeTab === "officials"
-                ? "border-[#002045] text-[#002045]"
-                : "border-transparent text-slate-500 hover:text-slate-900"
+                ? "border-[#002045] dark:border-blue-400 text-[#002045] dark:text-blue-400"
+                : "border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
             }`}
           >
             <Users className="w-4 h-4" />
@@ -592,8 +592,8 @@ export default function AdminDashboardPage() {
             onClick={() => setActiveTab("competencies")}
             className={`pb-3 text-sm font-bold border-b-2 transition-all flex items-center gap-2 cursor-pointer ${
               activeTab === "competencies"
-                ? "border-[#002045] text-[#002045]"
-                : "border-transparent text-slate-500 hover:text-slate-900"
+                ? "border-[#002045] dark:border-blue-400 text-[#002045] dark:text-blue-400"
+                : "border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
             }`}
           >
             <Layers className="w-4 h-4" />
@@ -604,8 +604,8 @@ export default function AdminDashboardPage() {
             onClick={() => setActiveTab("resources")}
             className={`pb-3 text-sm font-bold border-b-2 transition-all flex items-center gap-2 cursor-pointer ${
               activeTab === "resources"
-                ? "border-[#002045] text-[#002045]"
-                : "border-transparent text-slate-500 hover:text-slate-900"
+                ? "border-[#002045] dark:border-blue-400 text-[#002045] dark:text-blue-400"
+                : "border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
             }`}
           >
             <BookOpen className="w-4 h-4" />
@@ -617,7 +617,7 @@ export default function AdminDashboardPage() {
         {activeTab === "officials" && (
           <div className="space-y-4">
             {/* Search & Filters */}
-            <div className="bg-white p-4 rounded-xl border border-slate-200/90 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="bg-white dark:bg-[#0f172a] p-4 rounded-xl border border-slate-200/90 dark:border-slate-800 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="relative flex-1">
                 <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
@@ -625,17 +625,17 @@ export default function AdminDashboardPage() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search by officer name, ID, role, or designation..."
-                  className="w-full pl-9 pr-3.5 py-2 text-xs bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-hidden focus:ring-2 focus:ring-[#002045] focus:bg-white"
+                  className="w-full pl-9 pr-3.5 py-2 text-xs bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-[#002045] dark:focus:ring-blue-500 focus:bg-white dark:focus:bg-slate-900"
                 />
               </div>
 
               <div className="flex items-center gap-2">
                 <Filter className="w-3.5 h-3.5 text-slate-400" />
-                <span className="text-xs font-semibold text-slate-600">Division:</span>
+                <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">Division:</span>
                 <select
                   value={selectedDivision}
                   onChange={(e) => setSelectedDivision(e.target.value)}
-                  className="text-xs bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 font-medium text-slate-800 focus:outline-hidden focus:ring-2 focus:ring-[#002045]"
+                  className="text-xs bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-2.5 py-1.5 font-medium text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-[#002045] dark:focus:ring-blue-500"
                 >
                   {availableDivisions.map((div) => (
                     <option key={div} value={div}>
@@ -647,7 +647,7 @@ export default function AdminDashboardPage() {
             </div>
 
             {/* Officials Table */}
-            <div className="bg-white rounded-xl border border-slate-200/90 shadow-2xs overflow-hidden">
+            <div className="bg-white dark:bg-[#0f172a] rounded-xl border border-slate-200/90 dark:border-slate-800 shadow-2xs overflow-hidden">
               {loadingData ? (
                 <LoadingState message="Loading cadre registry..." />
               ) : filteredOfficials.length === 0 ? (
@@ -659,7 +659,7 @@ export default function AdminDashboardPage() {
                 <div className="overflow-x-auto">
                   <table className="w-full text-left border-collapse">
                     <thead>
-                      <tr className="bg-slate-50/80 border-b border-slate-200/80 text-[11px] uppercase tracking-wider font-bold text-slate-600">
+                      <tr className="bg-slate-50/80 dark:bg-slate-800/80 border-b border-slate-200/80 dark:border-slate-700/80 text-[11px] uppercase tracking-wider font-bold text-slate-600 dark:text-slate-300">
                         <th className="py-3 px-4">Official ID</th>
                         <th className="py-3 px-4">Officer Name</th>
                         <th className="py-3 px-4">Designation & Division</th>
@@ -668,37 +668,37 @@ export default function AdminDashboardPage() {
                         <th className="py-3 px-4 text-right">Cadre Actions</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-100 text-xs">
+                    <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-xs">
                       {filteredOfficials.map((off) => (
-                        <tr key={off.official_id} className="hover:bg-slate-50/60 transition-colors">
-                          <td className="py-3.5 px-4 font-mono font-bold text-[#002045]">
+                        <tr key={off.official_id} className="hover:bg-slate-50/60 dark:hover:bg-slate-800/40 transition-colors">
+                          <td className="py-3.5 px-4 font-mono font-bold text-[#002045] dark:text-blue-400">
                             {off.official_id}
                           </td>
                           <td className="py-3.5 px-4">
-                            <div className="font-bold text-slate-900">{off.name}</div>
-                            <div className="text-[11px] text-slate-500 font-mono truncate max-w-xs">
+                            <div className="font-bold text-slate-900 dark:text-white">{off.name}</div>
+                            <div className="text-[11px] text-slate-500 dark:text-slate-400 font-mono truncate max-w-xs">
                               {off.education}
                             </div>
                           </td>
                           <td className="py-3.5 px-4">
-                            <div className="font-medium text-slate-800">{off.designation}</div>
-                            <div className="text-[11px] text-slate-500 flex items-center gap-1">
+                            <div className="font-medium text-slate-800 dark:text-slate-200">{off.designation}</div>
+                            <div className="text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-1">
                               <Building2 className="w-3 h-3 text-slate-400" />
                               <span>{off.division}</span>
                             </div>
                           </td>
                           <td className="py-3.5 px-4">
-                            <span className="px-2 py-0.5 rounded-full bg-blue-50 text-blue-800 border border-blue-200 text-[10px] font-bold">
+                            <span className="px-2 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-900/60 text-[10px] font-bold">
                               {off.role_id}
                             </span>
                           </td>
-                          <td className="py-3.5 px-4 font-medium text-slate-700">
+                          <td className="py-3.5 px-4 font-medium text-slate-700 dark:text-slate-300">
                             {off.experience_years} Years
                           </td>
                           <td className="py-3.5 px-4 text-right space-x-2">
                             <button
                               onClick={() => handleInspectOfficial(off)}
-                              className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-bold text-[#002045] bg-[#eff4ff] hover:bg-[#dce9ff] border border-[#dce9ff] rounded-md transition-colors cursor-pointer"
+                              className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-bold text-[#002045] dark:text-blue-300 bg-[#eff4ff] dark:bg-blue-950/60 hover:bg-[#dce9ff] dark:hover:bg-blue-900/80 border border-[#dce9ff] dark:border-blue-900/50 rounded-md transition-colors cursor-pointer"
                               title="Inspect Competency Gaps & Profile"
                             >
                               <BarChart3 className="w-3 h-3" />
@@ -707,7 +707,7 @@ export default function AdminDashboardPage() {
 
                             <button
                               onClick={() => handleImpersonate(off)}
-                              className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-md transition-colors cursor-pointer"
+                              className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-bold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 border border-emerald-200 dark:border-emerald-800/60 rounded-md transition-colors cursor-pointer"
                               title="Open Employee Dashboard for this Officer"
                             >
                               <UserCheck className="w-3 h-3" />
@@ -727,11 +727,11 @@ export default function AdminDashboardPage() {
         {/* TAB 2: COMPETENCIES MATRIX */}
         {activeTab === "competencies" && (
           <div className="space-y-4">
-            <div className="bg-white p-4 rounded-xl border border-slate-200/90 shadow-2xs">
-              <h3 className="text-sm font-bold text-slate-900">
+            <div className="bg-white dark:bg-[#0f172a] p-4 rounded-xl border border-slate-200/90 dark:border-slate-800 shadow-2xs">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white">
                 MoSPI FRAC Competency Repository ({competencies.length})
               </h3>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                 Standardized Framework of Roles, Activities and Competencies mapped under National
                 Statistical Capacity Building.
               </p>
@@ -741,35 +741,35 @@ export default function AdminDashboardPage() {
               {competencies.map((comp) => (
                 <div
                   key={comp.competency_id}
-                  className="bg-white p-4 rounded-xl border border-slate-200/90 shadow-2xs hover:border-[#002045]/40 transition-all flex flex-col justify-between"
+                  className="bg-white dark:bg-[#0f172a] p-4 rounded-xl border border-slate-200/90 dark:border-slate-800 shadow-2xs hover:border-[#002045]/40 dark:hover:border-blue-500/40 transition-all flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-2">
-                      <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-700">
+                      <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
                         {comp.competency_id}
                       </span>
                       <span
                         className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
                           comp.domain === "Domain"
-                            ? "bg-blue-50 text-blue-700 border border-blue-200"
+                            ? "bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-900/60"
                             : comp.domain === "Functional"
-                            ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
-                            : "bg-purple-50 text-purple-700 border border-purple-200"
+                            ? "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900/60"
+                            : "bg-purple-50 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-900/60"
                         }`}
                       >
                         {comp.domain}
                       </span>
                     </div>
-                    <h4 className="text-sm font-bold text-slate-900">{comp.name}</h4>
-                    <p className="text-xs text-slate-500 mt-1 line-clamp-3">
+                    <h4 className="text-sm font-bold text-slate-900 dark:text-white">{comp.name}</h4>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 line-clamp-3">
                       {comp.description}
                     </p>
                   </div>
-                  <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+                  <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
                     <span>Type: {comp.competency_type || "Core"}</span>
                     <Link
                       href={`/assessments`}
-                      className="text-[#002045] font-semibold hover:underline flex items-center gap-1"
+                      className="text-[#002045] dark:text-blue-400 font-semibold hover:underline flex items-center gap-1"
                     >
                       <span>View Assessments</span>
                       <ChevronRight className="w-3 h-3" />
@@ -788,44 +788,44 @@ export default function AdminDashboardPage() {
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                    <BookOpen className="w-4 h-4 text-emerald-600" />
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <BookOpen className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                     <span>iGOT Karmayogi Courses ({courses.length})</span>
                   </h3>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
                     Government of India online capacity building modules mapped to official competencies.
                   </p>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {courses.map((c) => (
+                {courses.map((c, idx) => (
                   <div
-                    key={c.course_id}
-                    className="bg-white p-4 rounded-xl border border-slate-200/90 shadow-2xs flex flex-col justify-between"
+                    key={`${c.course_id}-${idx}`}
+                    className="bg-white dark:bg-[#0f172a] p-4 rounded-xl border border-slate-200/90 dark:border-slate-800 shadow-2xs flex flex-col justify-between"
                   >
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 font-bold border border-emerald-200">
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 font-bold border border-emerald-200 dark:border-emerald-800/60">
                           {c.course_id}
                         </span>
                         {c.duration_minutes && (
-                          <span className="text-[11px] text-slate-500">
+                          <span className="text-[11px] text-slate-500 dark:text-slate-400">
                             {c.duration_minutes} Mins
                           </span>
                         )}
                       </div>
-                      <h4 className="text-sm font-bold text-slate-900">{c.title}</h4>
-                      <p className="text-xs text-slate-500 mt-1 line-clamp-2">
+                      <h4 className="text-sm font-bold text-slate-900 dark:text-white">{c.title}</h4>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">
                         {c.description}
                       </p>
-                      <div className="mt-2 text-[11px] text-slate-600">
+                      <div className="mt-2 text-[11px] text-slate-600 dark:text-slate-300">
                         Provider: <strong>{c.provider}</strong>
                       </div>
                     </div>
 
-                    <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                      <span className="text-emerald-700 font-semibold text-[11px]">
+                    <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+                      <span className="text-emerald-700 dark:text-emerald-400 font-semibold text-[11px]">
                         {c.verification_status || "Verified iGOT"}
                       </span>
                       {c.source_url && (
@@ -833,7 +833,7 @@ export default function AdminDashboardPage() {
                           href={c.source_url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-[#002045] font-bold hover:underline"
+                          className="inline-flex items-center gap-1 text-[#002045] dark:text-blue-400 font-bold hover:underline"
                         >
                           <span>Open iGOT</span>
                           <ExternalLink className="w-3 h-3" />
@@ -846,43 +846,43 @@ export default function AdminDashboardPage() {
             </div>
 
             {/* NSSTA Programmes */}
-            <div className="space-y-3 pt-6 border-t border-slate-200">
+            <div className="space-y-3 pt-6 border-t border-slate-200 dark:border-slate-800">
               <div>
-                <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                  <GraduationCap className="w-4 h-4 text-amber-600" />
+                <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <GraduationCap className="w-4 h-4 text-amber-600 dark:text-amber-400" />
                   <span>NSSTA Training Programmes ({trainings.length})</span>
                 </h3>
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-slate-500 dark:text-slate-400">
                   National Statistical Systems Training Academy residential and scheduled workshops.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {trainings.map((t) => (
+                {trainings.map((t, idx) => (
                   <div
-                    key={t.training_id}
-                    className="bg-white p-4 rounded-xl border border-slate-200/90 shadow-2xs flex flex-col justify-between"
+                    key={`${t.training_id}-${idx}`}
+                    className="bg-white dark:bg-[#0f172a] p-4 rounded-xl border border-slate-200/90 dark:border-slate-800 shadow-2xs flex flex-col justify-between"
                   >
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-50 text-amber-800 font-bold border border-amber-200">
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 font-bold border border-amber-200 dark:border-amber-800/60">
                           {t.training_id}
                         </span>
-                        <span className="text-[11px] text-slate-500">
+                        <span className="text-[11px] text-slate-500 dark:text-slate-400">
                           {t.category || "NSSTA Academy"}
                         </span>
                       </div>
-                      <h4 className="text-sm font-bold text-slate-900">{t.title}</h4>
-                      <p className="text-xs text-slate-500 mt-1 line-clamp-2">
+                      <h4 className="text-sm font-bold text-slate-900 dark:text-white">{t.title}</h4>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">
                         Topic: {t.topic}
                       </p>
-                      <div className="mt-2 text-[11px] text-slate-600">
+                      <div className="mt-2 text-[11px] text-slate-600 dark:text-slate-300">
                         Provider: <strong>{t.provider}</strong>
                       </div>
                     </div>
 
-                    <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                      <span className="text-slate-500 text-[11px]">
+                    <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+                      <span className="text-slate-500 dark:text-slate-400 text-[11px]">
                         Year: {t.year || 2026}
                       </span>
                       {t.source_url && (
@@ -890,7 +890,7 @@ export default function AdminDashboardPage() {
                           href={t.source_url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-[#002045] font-bold hover:underline"
+                          className="inline-flex items-center gap-1 text-[#002045] dark:text-blue-400 font-bold hover:underline"
                         >
                           <span>Brochure</span>
                           <ExternalLink className="w-3 h-3" />
@@ -910,7 +910,7 @@ export default function AdminDashboardPage() {
       {/* ========================================================================= */}
       {inspectingOfficial && (
         <div className="fixed inset-0 z-50 overflow-hidden bg-slate-900/50 backdrop-blur-xs flex justify-end">
-          <div className="w-full max-w-xl bg-white h-full shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-right duration-200">
+          <div className="w-full max-w-xl bg-white dark:bg-[#0b1329] h-full shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-right duration-200">
             {/* Drawer Header */}
             <div className="p-5 bg-[#002045] text-white flex items-center justify-between">
               <div className="flex items-center gap-3">
@@ -937,41 +937,41 @@ export default function AdminDashboardPage() {
             {/* Drawer Body */}
             <div className="p-6 overflow-y-auto flex-1 space-y-6">
               {/* Dossier Quick Details */}
-              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200/80 grid grid-cols-2 gap-3 text-xs">
+              <div className="bg-slate-50 dark:bg-slate-900/80 p-4 rounded-xl border border-slate-200/80 dark:border-slate-800 grid grid-cols-2 gap-3 text-xs">
                 <div>
-                  <span className="text-slate-500 font-semibold block">Official ID:</span>
-                  <span className="font-mono font-bold text-slate-900">
+                  <span className="text-slate-500 dark:text-slate-400 font-semibold block">Official ID:</span>
+                  <span className="font-mono font-bold text-slate-900 dark:text-white">
                     {inspectingOfficial.official_id}
                   </span>
                 </div>
                 <div>
-                  <span className="text-slate-500 font-semibold block">Cadre Role:</span>
-                  <span className="font-bold text-[#002045]">{inspectingOfficial.role_id}</span>
+                  <span className="text-slate-500 dark:text-slate-400 font-semibold block">Cadre Role:</span>
+                  <span className="font-bold text-[#002045] dark:text-blue-400">{inspectingOfficial.role_id}</span>
                 </div>
                 <div>
-                  <span className="text-slate-500 font-semibold block">Experience:</span>
-                  <span className="font-bold text-slate-900">
+                  <span className="text-slate-500 dark:text-slate-400 font-semibold block">Experience:</span>
+                  <span className="font-bold text-slate-900 dark:text-white">
                     {inspectingOfficial.experience_years} Years
                   </span>
                 </div>
                 <div>
-                  <span className="text-slate-500 font-semibold block">Education:</span>
-                  <span className="font-medium text-slate-800">{inspectingOfficial.education}</span>
+                  <span className="text-slate-500 dark:text-slate-400 font-semibold block">Education:</span>
+                  <span className="font-medium text-slate-800 dark:text-slate-200">{inspectingOfficial.education}</span>
                 </div>
-                <div className="col-span-2 pt-2 border-t border-slate-200/60">
-                  <span className="text-slate-500 font-semibold block">Current Assignment:</span>
-                  <p className="text-slate-700 mt-0.5">{inspectingOfficial.current_assignment}</p>
+                <div className="col-span-2 pt-2 border-t border-slate-200/60 dark:border-slate-800">
+                  <span className="text-slate-500 dark:text-slate-400 font-semibold block">Current Assignment:</span>
+                  <p className="text-slate-700 dark:text-slate-300 mt-0.5">{inspectingOfficial.current_assignment}</p>
                 </div>
               </div>
 
               {/* Real-Time Competency Gaps */}
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <h4 className="text-sm font-bold text-slate-900 flex items-center gap-1.5">
-                    <Activity className="w-4 h-4 text-red-600" />
+                  <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                    <Activity className="w-4 h-4 text-red-600 dark:text-red-400" />
                     <span>Identified Competency Gaps ({inspectingGaps.length})</span>
                   </h4>
-                  <span className="text-[11px] font-bold text-slate-500">
+                  <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400">
                     Required vs Current
                   </span>
                 </div>
@@ -981,8 +981,8 @@ export default function AdminDashboardPage() {
                 ) : inspectionError ? (
                   <ErrorState message={inspectionError} />
                 ) : inspectingGaps.length === 0 ? (
-                  <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <div className="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 text-emerald-800 dark:text-emerald-300 text-xs flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
                     <span>All required role competencies are met for this officer!</span>
                   </div>
                 ) : (
@@ -990,17 +990,17 @@ export default function AdminDashboardPage() {
                     {inspectingGaps.map((gap) => (
                       <div
                         key={gap.competency_id}
-                        className="p-3.5 bg-white rounded-xl border border-slate-200 shadow-2xs space-y-2"
+                        className="p-3.5 bg-white dark:bg-[#0f172a] rounded-xl border border-slate-200 dark:border-slate-800 shadow-2xs space-y-2"
                       >
                         <div className="flex items-center justify-between">
-                          <span className="text-xs font-bold text-slate-900">
+                          <span className="text-xs font-bold text-slate-900 dark:text-white">
                             {gap.competency_name}
                           </span>
                           <span
                             className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
                               gap.gap >= 2
-                                ? "bg-red-50 text-red-700 border border-red-200"
-                                : "bg-amber-50 text-amber-700 border border-amber-200"
+                                ? "bg-red-50 dark:bg-red-950/60 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-900/60"
+                                : "bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-900/60"
                             }`}
                           >
                             Gap: -{gap.gap} Level{gap.gap > 1 ? "s" : ""}
@@ -1009,11 +1009,11 @@ export default function AdminDashboardPage() {
 
                         {/* Progress Bar comparison */}
                         <div className="space-y-1">
-                          <div className="flex items-center justify-between text-[10px] text-slate-500">
+                          <div className="flex items-center justify-between text-[10px] text-slate-500 dark:text-slate-400">
                             <span>Current Level: {gap.current_level} / 5</span>
                             <span>Target Level: {gap.required_level} / 5</span>
                           </div>
-                          <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden flex">
+                          <div className="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden flex">
                             <div
                               style={{ width: `${(gap.current_level / 5) * 100}%` }}
                               className="bg-emerald-500 h-full"
@@ -1033,7 +1033,7 @@ export default function AdminDashboardPage() {
               </div>
 
               {/* Action Button */}
-              <div className="pt-4 border-t border-slate-100 flex gap-3">
+              <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex gap-3">
                 <button
                   onClick={() => handleImpersonate(inspectingOfficial)}
                   className="flex-1 py-2.5 px-4 bg-[#002045] hover:bg-[#1a365d] text-white text-xs font-bold rounded-lg shadow-sm transition-colors flex items-center justify-center gap-2 cursor-pointer"
@@ -1043,7 +1043,7 @@ export default function AdminDashboardPage() {
                 </button>
                 <button
                   onClick={() => setInspectingOfficial(null)}
-                  className="px-4 py-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors cursor-pointer"
+                  className="px-4 py-2.5 text-xs font-bold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors cursor-pointer"
                 >
                   Close
                 </button>

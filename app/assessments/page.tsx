@@ -389,14 +389,14 @@ export default function AssessmentsPage() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="p-1.5 rounded-md bg-[#eff4ff] text-[#002045]">
+              <span className="p-1.5 rounded-md bg-[#eff4ff] dark:bg-sky-950 text-[#002045] dark:text-sky-300">
                 <FileCheck2 className="w-5 h-5" />
               </span>
-              <h1 className="text-2xl font-bold tracking-tight text-[#002045]">
+              <h1 className="text-2xl font-bold tracking-tight text-[#002045] dark:text-white">
                 Competency Assessments
               </h1>
             </div>
-            <p className="text-xs text-slate-500 mt-1">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
               Official evaluations mapped to MoSPI statistical and technical competencies
             </p>
           </div>
@@ -405,7 +405,7 @@ export default function AssessmentsPage() {
             {selectedAssessment ? (
               <button
                 onClick={handleExitQuiz}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-600 bg-white border border-slate-200 rounded-md shadow-2xs hover:bg-slate-50 transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md shadow-2xs hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 <span>Back to Catalogue</span>
@@ -418,9 +418,9 @@ export default function AssessmentsPage() {
                     setUploadError(null);
                     setUploadSuccess(null);
                   }}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-white border border-slate-200 rounded-md shadow-2xs hover:bg-slate-50 transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md shadow-2xs hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer"
                 >
-                  <UploadCloud className="w-3.5 h-3.5 text-slate-500" />
+                  <UploadCloud className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
                   <span>Upload Quiz (JSON)</span>
                 </button>
 
@@ -456,12 +456,12 @@ export default function AssessmentsPage() {
 
         {/* View 1: Active Assessment Attempt Result */}
         {attemptResult ? (
-          <div className="bg-white rounded-xl border border-slate-200/90 shadow-2xs p-8 max-w-2xl mx-auto text-center animate-in fade-in duration-300">
+          <div className="bg-white dark:bg-[#0f172a] rounded-xl border border-slate-200/90 dark:border-slate-800 shadow-2xs p-8 max-w-2xl mx-auto text-center animate-in fade-in duration-300 transition-colors">
             <div
               className={`w-16 h-16 rounded-full mx-auto flex items-center justify-center mb-4 ${
                 attemptResult.passed
-                  ? "bg-emerald-100 text-emerald-600"
-                  : "bg-rose-100 text-rose-600"
+                  ? "bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400"
+                  : "bg-rose-100 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400"
               }`}
             >
               {attemptResult.passed ? (
@@ -474,52 +474,52 @@ export default function AssessmentsPage() {
             <span
               className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
                 attemptResult.passed
-                  ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
-                  : "bg-rose-50 text-rose-800 border border-rose-200"
+                  ? "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800"
+                  : "bg-rose-50 dark:bg-rose-950/60 text-rose-800 dark:text-rose-300 border border-rose-200 dark:border-rose-900"
               }`}
             >
               {attemptResult.passed ? "Assessment Passed" : "Needs Retake"}
             </span>
 
-            <h2 className="text-xl font-bold text-slate-900 mt-3">
+            <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-3">
               Score: {attemptResult.score} Marks
             </h2>
-            <p className="text-xs text-slate-500 mt-1">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
               {attemptResult.passed
                 ? "Congratulations! You have satisfied the passing score benchmark for this competency."
                 : "You did not achieve the required passing score for this competency evaluation."}
             </p>
 
-            <div className="bg-slate-50 border border-slate-200/80 rounded-lg p-4 my-6 text-xs text-slate-600 grid grid-cols-2 gap-4 max-w-sm mx-auto text-left">
+            <div className="bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-700 rounded-lg p-4 my-6 text-xs text-slate-600 dark:text-slate-300 grid grid-cols-2 gap-4 max-w-sm mx-auto text-left">
               <div>
-                <span className="text-[10px] uppercase font-bold text-slate-400 block">
+                <span className="text-[10px] uppercase font-bold text-slate-400 dark:text-slate-500 block">
                   Official ID
                 </span>
-                <span className="font-semibold text-slate-800">
+                <span className="font-semibold text-slate-800 dark:text-slate-200">
                   {attemptResult.official_id}
                 </span>
               </div>
               <div>
-                <span className="text-[10px] uppercase font-bold text-slate-400 block">
+                <span className="text-[10px] uppercase font-bold text-slate-400 dark:text-slate-500 block">
                   Attempt ID
                 </span>
-                <span className="font-mono text-[11px] text-slate-800">
+                <span className="font-mono text-[11px] text-slate-800 dark:text-slate-200">
                   {attemptResult.attempt_id}
                 </span>
               </div>
               <div>
-                <span className="text-[10px] uppercase font-bold text-slate-400 block">
+                <span className="text-[10px] uppercase font-bold text-slate-400 dark:text-slate-500 block">
                   Passing Score
                 </span>
-                <span className="font-semibold text-slate-800">
+                <span className="font-semibold text-slate-800 dark:text-slate-200">
                   {selectedAssessment?.passing_score}%
                 </span>
               </div>
               <div>
-                <span className="text-[10px] uppercase font-bold text-slate-400 block">
+                <span className="text-[10px] uppercase font-bold text-slate-400 dark:text-slate-500 block">
                   Submitted At
                 </span>
-                <span className="text-[11px] text-slate-800">
+                <span className="text-[11px] text-slate-800 dark:text-slate-200">
                   {new Date(attemptResult.started_at).toLocaleDateString()}
                 </span>
               </div>
@@ -528,13 +528,13 @@ export default function AssessmentsPage() {
             <div className="flex items-center justify-center gap-3">
               <button
                 onClick={() => selectedAssessment && handleStartAssessment(selectedAssessment)}
-                className="px-4 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-md transition-colors cursor-pointer"
+                className="px-4 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md transition-colors cursor-pointer"
               >
                 Retake Assessment
               </button>
               <button
                 onClick={handleExitQuiz}
-                className="px-4 py-2 text-xs font-semibold text-white bg-[#002045] hover:bg-[#1a365d] rounded-md shadow-2xs transition-colors cursor-pointer"
+                className="px-4 py-2 text-xs font-semibold text-white bg-[#002045] dark:bg-sky-600 hover:bg-[#1a365d] dark:hover:bg-sky-700 rounded-md shadow-2xs transition-colors cursor-pointer"
               >
                 Return to Catalogue
               </button>
@@ -542,24 +542,24 @@ export default function AssessmentsPage() {
           </div>
         ) : selectedAssessment ? (
           /* View 2: Active Assessment Question Runner */
-          <div className="bg-white rounded-xl border border-slate-200/90 shadow-2xs overflow-hidden max-w-3xl mx-auto">
+          <div className="bg-white dark:bg-[#0f172a] rounded-xl border border-slate-200/90 dark:border-slate-800 shadow-2xs overflow-hidden max-w-3xl mx-auto transition-colors">
             {/* Header info */}
-            <div className="bg-[#002045] text-white p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="bg-[#002045] dark:bg-[#081326] text-white p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-transparent dark:border-slate-800">
               <div>
                 <div className="flex items-center gap-2">
                   <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-white/10 uppercase tracking-wider text-emerald-300">
                     Active Quiz
                   </span>
-                  <span className="text-xs text-slate-300 font-mono">
+                  <span className="text-xs text-slate-300 dark:text-slate-400 font-mono">
                     {selectedAssessment.assessment_id}
                   </span>
                 </div>
-                <h3 className="text-base font-bold mt-1">
+                <h3 className="text-base font-bold mt-1 text-white">
                   {selectedAssessment.title}
                 </h3>
               </div>
 
-              <div className="text-xs text-slate-300 sm:text-right">
+              <div className="text-xs text-slate-300 dark:text-slate-400 sm:text-right">
                 <span>Passing Criteria: </span>
                 <strong className="text-white">
                   {selectedAssessment.passing_score}%
@@ -585,8 +585,8 @@ export default function AssessmentsPage() {
               <div className="p-6 sm:p-8 space-y-6">
                 {/* Progress bar */}
                 <div>
-                  <div className="flex items-center justify-between text-xs text-slate-500 mb-2">
-                    <span className="font-semibold text-slate-700">
+                  <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
+                    <span className="font-semibold text-slate-700 dark:text-slate-300">
                       Question {currentQuestionIndex + 1} of {questions.length}
                     </span>
                     <span>
@@ -594,9 +594,9 @@ export default function AssessmentsPage() {
                       {questions.length}
                     </span>
                   </div>
-                  <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                  <div className="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-[#006a61] transition-all duration-300"
+                      className="h-full bg-[#006a61] dark:bg-teal-400 transition-all duration-300"
                       style={{
                         width: `${
                           ((currentQuestionIndex + 1) / questions.length) * 100
@@ -609,10 +609,10 @@ export default function AssessmentsPage() {
                 {/* Question Details */}
                 <div className="space-y-4">
                   <div className="flex items-start justify-between gap-4">
-                    <h4 className="text-sm font-semibold text-slate-900 leading-snug">
+                    <h4 className="text-sm font-semibold text-slate-900 dark:text-white leading-snug">
                       {questions[currentQuestionIndex].question_text}
                     </h4>
-                    <span className="shrink-0 text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200">
+                    <span className="shrink-0 text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
                       {questions[currentQuestionIndex].marks} Mark
                       {questions[currentQuestionIndex].marks > 1 ? "s" : ""}
                     </span>
@@ -638,16 +638,16 @@ export default function AssessmentsPage() {
                           }
                           className={`w-full text-left p-3.5 rounded-lg border text-xs font-medium transition-all flex items-center justify-between cursor-pointer ${
                             isSelected
-                              ? "border-[#002045] bg-[#eff4ff] text-[#002045] shadow-2xs font-semibold ring-1 ring-[#002045]/20"
-                              : "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/50 text-slate-700"
+                              ? "border-[#002045] dark:border-sky-500 bg-[#eff4ff] dark:bg-sky-950/40 text-[#002045] dark:text-sky-300 shadow-2xs font-semibold ring-1 ring-[#002045]/20 dark:ring-sky-500/30"
+                              : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-slate-50/50 dark:hover:bg-slate-800/50 text-slate-700 dark:text-slate-200"
                           }`}
                         >
                           <span>{option.option_text}</span>
                           <span
                             className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 ml-3 ${
                               isSelected
-                                ? "border-[#002045] bg-[#002045]"
-                                : "border-slate-300 bg-white"
+                                ? "border-[#002045] dark:border-sky-400 bg-[#002045] dark:bg-sky-500"
+                                : "border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800"
                             }`}
                           >
                             {isSelected && (
@@ -661,14 +661,14 @@ export default function AssessmentsPage() {
                 </div>
 
                 {/* Question Navigation */}
-                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
                   <button
                     type="button"
                     disabled={currentQuestionIndex === 0}
                     onClick={() =>
                       setCurrentQuestionIndex((prev) => Math.max(0, prev - 1))
                     }
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 transition-colors disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
                   >
                     <ArrowLeft className="w-3.5 h-3.5" />
                     Previous
@@ -682,7 +682,7 @@ export default function AssessmentsPage() {
                           Math.min(questions.length - 1, prev + 1)
                         )
                       }
-                      className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-[#002045] hover:bg-[#1a365d] rounded-md shadow-2xs transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-[#002045] dark:bg-sky-600 hover:bg-[#1a365d] dark:hover:bg-sky-700 rounded-md shadow-2xs transition-colors cursor-pointer"
                     >
                       Next
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -715,21 +715,21 @@ export default function AssessmentsPage() {
           /* View 3: Assessment Catalogue Cards */
           <section className="space-y-4">
             {loadingList ? (
-              <div className="bg-white rounded-xl border border-slate-200/90 p-8">
+              <div className="bg-white dark:bg-[#0f172a] rounded-xl border border-slate-200/90 dark:border-slate-800 p-8">
                 <LoadingState message="Loading available official assessments..." />
               </div>
             ) : listError ? (
               <ErrorState message={listError} onRetry={fetchAssessments} />
             ) : assessments.length === 0 ? (
-              <div className="bg-white rounded-xl border border-slate-200/90 p-8 text-center space-y-4">
-                <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center mx-auto text-slate-400">
+              <div className="bg-white dark:bg-[#0f172a] rounded-xl border border-slate-200/90 dark:border-slate-800 p-8 text-center space-y-4">
+                <div className="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto text-slate-400">
                   <FileCheck2 className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-slate-800">
+                  <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200">
                     No Assessments Available Yet
                   </h3>
-                  <p className="text-xs text-slate-500 mt-1 max-w-md mx-auto">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-md mx-auto">
                     Upload a PDF document to generate MCQs, create an assessment via Groq AI, or upload a JSON quiz to get started.
                   </p>
                 </div>
@@ -761,19 +761,19 @@ export default function AssessmentsPage() {
                 {assessments.map((item) => (
                   <div
                     key={item.assessment_id}
-                    className="bg-white rounded-xl border border-slate-200/90 shadow-2xs hover:border-slate-300 hover:shadow-xs transition-all p-5 flex flex-col justify-between group"
+                    className="bg-white dark:bg-[#0f172a] rounded-xl border border-slate-200/90 dark:border-slate-800 shadow-2xs hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-xs transition-all p-5 flex flex-col justify-between group"
                   >
                     <div>
                       <div className="flex items-center justify-between gap-2 mb-2.5">
                         <span
                           className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border flex items-center gap-1 ${
                             item.source_type === "PDF_UPLOAD"
-                              ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                              ? "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800"
                               : item.source_type === "AI_GENERATED"
-                              ? "bg-purple-50 text-purple-700 border-purple-200"
+                              ? "bg-purple-50 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800"
                               : item.source_type === "MANUAL_UPLOAD"
-                              ? "bg-blue-50 text-blue-700 border-blue-200"
-                              : "bg-slate-100 text-slate-700 border-slate-200"
+                              ? "bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800"
+                              : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700"
                           }`}
                         >
                           {item.source_type === "PDF_UPLOAD" && (
@@ -791,14 +791,14 @@ export default function AssessmentsPage() {
                         </span>
 
                         <div className="flex items-center gap-1">
-                          <span className="text-[10px] font-mono text-slate-400">
+                          <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500">
                             {item.assessment_id}
                           </span>
                           <button
                             onClick={() => handleDeleteAssessment(item.assessment_id)}
                             disabled={deletingId === item.assessment_id}
                             title="Delete Assessment"
-                            className="text-slate-300 hover:text-rose-600 p-1 rounded transition-colors opacity-0 group-hover:opacity-100 cursor-pointer"
+                            className="text-slate-300 dark:text-slate-600 hover:text-rose-600 dark:hover:text-rose-400 p-1 rounded transition-colors opacity-0 group-hover:opacity-100 cursor-pointer"
                           >
                             {deletingId === item.assessment_id ? (
                               <Loader2 className="w-3.5 h-3.5 animate-spin text-rose-500" />
@@ -809,28 +809,28 @@ export default function AssessmentsPage() {
                         </div>
                       </div>
 
-                      <h3 className="text-sm font-bold text-slate-900 line-clamp-2">
+                      <h3 className="text-sm font-bold text-slate-900 dark:text-white line-clamp-2">
                         {item.title}
                       </h3>
 
-                      <p className="text-xs text-slate-500 mt-2 line-clamp-3 leading-relaxed">
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 line-clamp-3 leading-relaxed">
                         {item.description}
                       </p>
 
                       {item.source_reference && (
-                        <div className="mt-2 text-[10px] text-slate-400 font-medium truncate flex items-center gap-1">
-                          <FileText className="w-3 h-3 text-slate-400 shrink-0" />
+                        <div className="mt-2 text-[10px] text-slate-400 dark:text-slate-500 font-medium truncate flex items-center gap-1">
+                          <FileText className="w-3 h-3 text-slate-400 dark:text-slate-500 shrink-0" />
                           <span className="truncate">{item.source_reference}</span>
                         </div>
                       )}
 
-                      <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-600">
+                      <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-600 dark:text-slate-400">
                         <div className="flex items-center gap-1">
-                          <HelpCircle className="w-3.5 h-3.5 text-slate-400" />
+                          <HelpCircle className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
                           <span>{item.question_count} Questions</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <Award className="w-3.5 h-3.5 text-[#006a61]" />
+                          <Award className="w-3.5 h-3.5 text-[#006a61] dark:text-teal-400" />
                           <span>Pass: {item.passing_score}%</span>
                         </div>
                       </div>
@@ -839,7 +839,7 @@ export default function AssessmentsPage() {
                     <button
                       type="button"
                       onClick={() => handleStartAssessment(item)}
-                      className="mt-5 w-full py-2 px-3 bg-[#002045] hover:bg-[#1a365d] text-white text-xs font-semibold rounded-md shadow-2xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                      className="mt-5 w-full py-2 px-3 bg-[#002045] dark:bg-sky-600 hover:bg-[#1a365d] dark:hover:bg-sky-700 text-white text-xs font-semibold rounded-md shadow-2xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                     >
                       <span>Start Assessment</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -853,9 +853,9 @@ export default function AssessmentsPage() {
 
         {/* Modal 1: AI Quiz Generator Modal (Supports PDF Upload & Topic modes) */}
         {isAiModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-xs p-4 animate-in fade-in duration-200">
-            <div className="bg-white rounded-xl border border-slate-200 shadow-xl max-w-lg w-full overflow-hidden">
-              <div className="bg-[#002045] text-white px-5 py-4 flex items-center justify-between">
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-xs p-4 animate-in fade-in duration-200">
+            <div className="bg-white dark:bg-[#0f172a] rounded-xl border border-slate-200 dark:border-slate-800 shadow-xl max-w-lg w-full overflow-hidden transition-colors">
+              <div className="bg-[#002045] dark:bg-[#081326] text-white px-5 py-4 flex items-center justify-between border-b border-transparent dark:border-slate-800">
                 <div className="flex items-center gap-2">
                   {generatorMode === "pdf" ? (
                     <FileType className="w-4 h-4 text-emerald-300" />
@@ -878,14 +878,14 @@ export default function AssessmentsPage() {
 
               {aiGenSuccess ? (
                 <div className="p-6 text-center space-y-4">
-                  <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 mx-auto flex items-center justify-center">
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="text-base font-bold text-slate-900">
+                    <h4 className="text-base font-bold text-slate-900 dark:text-white">
                       Quiz Generated Successfully!
                     </h4>
-                    <p className="text-xs text-slate-500 mt-1">
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
                       {aiGenSuccess.title} ({aiGenSuccess.question_count} questions) is ready.
                     </p>
                   </div>
@@ -898,7 +898,7 @@ export default function AssessmentsPage() {
                         setPdfFile(null);
                         handleStartAssessment(target);
                       }}
-                      className="px-4 py-2 text-xs font-semibold text-white bg-emerald-700 hover:bg-emerald-800 rounded-md shadow-2xs transition-colors cursor-pointer"
+                      className="px-4 py-2 text-xs font-semibold text-white bg-emerald-700 dark:bg-emerald-600 hover:bg-emerald-800 rounded-md shadow-2xs transition-colors cursor-pointer"
                     >
                       Start Quiz Now
                     </button>
@@ -908,7 +908,7 @@ export default function AssessmentsPage() {
                         setAiGenSuccess(null);
                         setPdfFile(null);
                       }}
-                      className="px-4 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-md transition-colors cursor-pointer"
+                      className="px-4 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md transition-colors cursor-pointer"
                     >
                       Back to Catalogue
                     </button>
@@ -917,14 +917,14 @@ export default function AssessmentsPage() {
               ) : (
                 <form onSubmit={handleGenerateQuiz} className="p-6 space-y-4">
                   {aiGenError && (
-                    <div className="p-3 bg-rose-50 border border-rose-200 rounded-lg flex items-start gap-2 text-xs text-rose-700">
+                    <div className="p-3 bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-900 rounded-lg flex items-start gap-2 text-xs text-rose-700 dark:text-rose-300">
                       <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
                       <span>{aiGenError}</span>
                     </div>
                   )}
 
                   {/* Mode Toggle Tabs */}
-                  <div className="flex border-b border-slate-200">
+                  <div className="flex border-b border-slate-200 dark:border-slate-800">
                     <button
                       type="button"
                       onClick={() => {
@@ -933,8 +933,8 @@ export default function AssessmentsPage() {
                       }}
                       className={`pb-2 px-3 text-xs font-semibold border-b-2 transition-colors flex items-center gap-1.5 cursor-pointer ${
                         generatorMode === "pdf"
-                          ? "border-[#006a61] text-[#006a61]"
-                          : "border-transparent text-slate-500 hover:text-slate-800"
+                          ? "border-[#006a61] dark:border-teal-400 text-[#006a61] dark:text-teal-400"
+                          : "border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
                       }`}
                     >
                       <FileType className="w-3.5 h-3.5" />
@@ -948,8 +948,8 @@ export default function AssessmentsPage() {
                       }}
                       className={`pb-2 px-3 text-xs font-semibold border-b-2 transition-colors flex items-center gap-1.5 cursor-pointer ${
                         generatorMode === "topic"
-                          ? "border-[#002045] text-[#002045]"
-                          : "border-transparent text-slate-500 hover:text-slate-800"
+                          ? "border-[#002045] dark:border-sky-400 text-[#002045] dark:text-sky-400"
+                          : "border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
                       }`}
                     >
                       <Sparkles className="w-3.5 h-3.5" />
@@ -960,12 +960,12 @@ export default function AssessmentsPage() {
                   {/* PDF Upload Selector */}
                   {generatorMode === "pdf" && (
                     <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                      <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                         Upload Study Material / Manual (PDF) <span className="text-rose-500">*</span>
                       </label>
                       <div
                         onClick={() => pdfInputRef.current?.click()}
-                        className="border-2 border-dashed border-slate-300 hover:border-[#006a61] rounded-xl p-5 text-center cursor-pointer transition-colors bg-slate-50/50 hover:bg-slate-50"
+                        className="border-2 border-dashed border-slate-300 dark:border-slate-700 hover:border-[#006a61] dark:hover:border-teal-400 rounded-xl p-5 text-center cursor-pointer transition-colors bg-slate-50/50 dark:bg-slate-900/40 hover:bg-slate-50 dark:hover:bg-slate-900"
                       >
                         <input
                           ref={pdfInputRef}
@@ -974,13 +974,13 @@ export default function AssessmentsPage() {
                           onChange={handlePdfSelected}
                           className="hidden"
                         />
-                        <FileType className="w-7 h-7 text-[#006a61] mx-auto mb-1.5" />
+                        <FileType className="w-7 h-7 text-[#006a61] dark:text-teal-400 mx-auto mb-1.5" />
                         {pdfFile ? (
                           <div className="space-y-1">
-                            <span className="text-xs font-bold text-slate-800 block truncate max-w-xs mx-auto">
+                            <span className="text-xs font-bold text-slate-800 dark:text-slate-200 block truncate max-w-xs mx-auto">
                               {pdfFile.name}
                             </span>
-                            <span className="text-[10px] text-emerald-700 font-semibold block">
+                            <span className="text-[10px] text-emerald-700 dark:text-emerald-400 font-semibold block">
                               {(pdfFile.size / (1024 * 1024)).toFixed(2)} MB • Ready to extract
                             </span>
                             <span className="text-[10px] text-slate-400 underline block pt-1">
@@ -989,10 +989,10 @@ export default function AssessmentsPage() {
                           </div>
                         ) : (
                           <>
-                            <span className="text-xs font-semibold text-slate-700 block">
+                            <span className="text-xs font-semibold text-slate-700 dark:text-slate-300 block">
                               Click to select or drag and drop PDF file
                             </span>
-                            <span className="text-[11px] text-slate-400 block mt-0.5">
+                            <span className="text-[11px] text-slate-400 dark:text-slate-500 block mt-0.5">
                               MoSPI survey manuals, statistical training guidelines, circulars (.pdf)
                             </span>
                           </>
@@ -1003,14 +1003,14 @@ export default function AssessmentsPage() {
 
                   {/* Competency Selection */}
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                       Map to Competency Domain <span className="text-rose-500">*</span>
                     </label>
                     <select
                       value={aiCompetencyId}
                       onChange={(e) => setAiCompetencyId(e.target.value)}
                       required
-                      className="w-full text-xs px-3 py-2 border border-slate-200 rounded-md bg-white text-slate-800 focus:outline-none focus:ring-1 focus:ring-[#002045]"
+                      className="w-full text-xs px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-md bg-white dark:bg-slate-900 text-slate-800 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#002045] dark:focus:ring-sky-500"
                     >
                       {competencies.length === 0 ? (
                         <option value="">Loading competencies...</option>
@@ -1026,7 +1026,7 @@ export default function AssessmentsPage() {
 
                   {/* Focus Topic */}
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                       Focus Topic / Chapter <span className="text-slate-400 font-normal">(Optional)</span>
                     </label>
                     <input
@@ -1038,14 +1038,14 @@ export default function AssessmentsPage() {
                       }
                       value={aiTopic}
                       onChange={(e) => setAiTopic(e.target.value)}
-                      className="w-full text-xs px-3 py-2 border border-slate-200 rounded-md focus:outline-none focus:ring-1 focus:ring-[#002045]"
+                      className="w-full text-xs px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-md bg-white dark:bg-slate-900 text-slate-800 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#002045] dark:focus:ring-sky-500"
                     />
                   </div>
 
                   {/* Difficulty & Number of Questions */}
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                      <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                         Difficulty Level
                       </label>
                       <div className="flex gap-1.5">
@@ -1056,8 +1056,8 @@ export default function AssessmentsPage() {
                             onClick={() => setAiDifficulty(lvl)}
                             className={`flex-1 py-1.5 text-[11px] font-medium rounded border transition-colors cursor-pointer ${
                               aiDifficulty === lvl
-                                ? "bg-[#002045] text-white border-[#002045]"
-                                : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
+                                ? "bg-[#002045] dark:bg-sky-600 text-white border-[#002045] dark:border-sky-600"
+                                : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700"
                             }`}
                           >
                             {lvl}
@@ -1067,7 +1067,7 @@ export default function AssessmentsPage() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                      <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                         MCQ Count
                       </label>
                       <div className="flex gap-1.5">
@@ -1078,8 +1078,8 @@ export default function AssessmentsPage() {
                             onClick={() => setAiNumQuestions(num)}
                             className={`flex-1 py-1.5 text-[11px] font-medium rounded border transition-colors cursor-pointer ${
                               aiNumQuestions === num
-                                ? "bg-[#002045] text-white border-[#002045]"
-                                : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
+                                ? "bg-[#002045] dark:bg-sky-600 text-white border-[#002045] dark:border-sky-600"
+                                : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700"
                             }`}
                           >
                             {num} MCQs
@@ -1092,7 +1092,7 @@ export default function AssessmentsPage() {
                   {/* Study Material text notes (only for topic mode) */}
                   {generatorMode === "topic" && (
                     <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                      <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                         Reference Notes / Excerpt <span className="text-slate-400 font-normal">(Optional)</span>
                       </label>
                       <textarea
@@ -1100,7 +1100,7 @@ export default function AssessmentsPage() {
                         placeholder="Paste document excerpts, guidelines or specific MoSPI circulars to generate questions directly from them..."
                         value={aiStudyMaterial}
                         onChange={(e) => setAiStudyMaterial(e.target.value)}
-                        className="w-full text-xs p-2.5 border border-slate-200 rounded-md focus:outline-none focus:ring-1 focus:ring-[#002045]"
+                        className="w-full text-xs p-2.5 border border-slate-200 dark:border-slate-700 rounded-md bg-white dark:bg-slate-900 text-slate-800 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#002045] dark:focus:ring-sky-500"
                       />
                     </div>
                   )}
@@ -1111,7 +1111,7 @@ export default function AssessmentsPage() {
                       type="button"
                       disabled={generatingQuiz}
                       onClick={() => setIsAiModalOpen(false)}
-                      className="px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-100 rounded-md transition-colors cursor-pointer"
+                      className="px-3 py-1.5 text-xs font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-md transition-colors cursor-pointer"
                     >
                       Cancel
                     </button>
@@ -1157,9 +1157,9 @@ export default function AssessmentsPage() {
 
         {/* Modal 2: Quiz Upload Modal (JSON) */}
         {isUploadModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-xs p-4 animate-in fade-in duration-200">
-            <div className="bg-white rounded-xl border border-slate-200 shadow-xl max-w-lg w-full overflow-hidden">
-              <div className="bg-[#002045] text-white px-5 py-4 flex items-center justify-between">
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-xs p-4 animate-in fade-in duration-200">
+            <div className="bg-white dark:bg-[#0f172a] rounded-xl border border-slate-200 dark:border-slate-800 shadow-xl max-w-lg w-full overflow-hidden transition-colors">
+              <div className="bg-[#002045] dark:bg-[#081326] text-white px-5 py-4 flex items-center justify-between border-b border-transparent dark:border-slate-800">
                 <div className="flex items-center gap-2">
                   <UploadCloud className="w-4 h-4 text-emerald-300" />
                   <h3 className="text-sm font-bold">Upload Custom Quiz (JSON)</h3>
@@ -1174,14 +1174,14 @@ export default function AssessmentsPage() {
 
               {uploadSuccess ? (
                 <div className="p-6 text-center space-y-4">
-                  <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 mx-auto flex items-center justify-center">
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="text-base font-bold text-slate-900">
+                    <h4 className="text-base font-bold text-slate-900 dark:text-white">
                       Quiz Uploaded Successfully!
                     </h4>
-                    <p className="text-xs text-slate-500 mt-1">
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
                       {uploadSuccess.title} ({uploadSuccess.question_count} questions) has been published.
                     </p>
                   </div>
@@ -1202,7 +1202,7 @@ export default function AssessmentsPage() {
                         setIsUploadModalOpen(false);
                         setUploadSuccess(null);
                       }}
-                      className="px-4 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-md transition-colors cursor-pointer"
+                      className="px-4 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md transition-colors cursor-pointer"
                     >
                       Back to Catalogue
                     </button>
@@ -1211,21 +1211,21 @@ export default function AssessmentsPage() {
               ) : (
                 <div className="p-6 space-y-4">
                   {uploadError && (
-                    <div className="p-3 bg-rose-50 border border-rose-200 rounded-lg flex items-start gap-2 text-xs text-rose-700">
+                    <div className="p-3 bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-900 rounded-lg flex items-start gap-2 text-xs text-rose-700 dark:text-rose-300">
                       <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
                       <span>{uploadError}</span>
                     </div>
                   )}
 
                   {/* Tabs */}
-                  <div className="flex border-b border-slate-200">
+                  <div className="flex border-b border-slate-200 dark:border-slate-800">
                     <button
                       type="button"
                       onClick={() => setUploadTab("file")}
                       className={`pb-2 px-3 text-xs font-semibold border-b-2 transition-colors cursor-pointer ${
                         uploadTab === "file"
-                          ? "border-[#002045] text-[#002045]"
-                          : "border-transparent text-slate-500 hover:text-slate-800"
+                          ? "border-[#002045] dark:border-sky-400 text-[#002045] dark:text-sky-400"
+                          : "border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
                       }`}
                     >
                       Upload JSON File
@@ -1235,8 +1235,8 @@ export default function AssessmentsPage() {
                       onClick={() => setUploadTab("json")}
                       className={`pb-2 px-3 text-xs font-semibold border-b-2 transition-colors cursor-pointer ${
                         uploadTab === "json"
-                          ? "border-[#002045] text-[#002045]"
-                          : "border-transparent text-slate-500 hover:text-slate-800"
+                          ? "border-[#002045] dark:border-sky-400 text-[#002045] dark:text-sky-400"
+                          : "border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
                       }`}
                     >
                       Paste JSON Code
@@ -1247,7 +1247,7 @@ export default function AssessmentsPage() {
                     <div className="space-y-4">
                       <div
                         onClick={() => fileInputRef.current?.click()}
-                        className="border-2 border-dashed border-slate-300 hover:border-[#002045] rounded-xl p-8 text-center cursor-pointer transition-colors bg-slate-50/50 hover:bg-slate-50"
+                        className="border-2 border-dashed border-slate-300 dark:border-slate-700 hover:border-[#002045] dark:hover:border-sky-400 rounded-xl p-8 text-center cursor-pointer transition-colors bg-slate-50/50 dark:bg-slate-900/40 hover:bg-slate-50 dark:hover:bg-slate-900"
                       >
                         <input
                           ref={fileInputRef}
@@ -1256,28 +1256,28 @@ export default function AssessmentsPage() {
                           onChange={handleFileUpload}
                           className="hidden"
                         />
-                        <UploadCloud className="w-8 h-8 text-slate-400 mx-auto mb-2" />
-                        <span className="text-xs font-bold text-slate-700 block">
+                        <UploadCloud className="w-8 h-8 text-slate-400 dark:text-slate-500 mx-auto mb-2" />
+                        <span className="text-xs font-bold text-slate-700 dark:text-slate-300 block">
                           Click to select or drag and drop quiz file
                         </span>
-                        <span className="text-[11px] text-slate-500 block mt-0.5">
+                        <span className="text-[11px] text-slate-500 dark:text-slate-400 block mt-0.5">
                           Standard JSON format (.json)
                         </span>
                       </div>
 
-                      <div className="bg-slate-50 border border-slate-200/80 rounded-lg p-3 flex items-center justify-between text-xs">
+                      <div className="bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-700 rounded-lg p-3 flex items-center justify-between text-xs">
                         <div>
-                          <span className="font-semibold text-slate-800 block">
+                          <span className="font-semibold text-slate-800 dark:text-slate-200 block">
                             Need the correct format?
                           </span>
-                          <span className="text-[11px] text-slate-500">
+                          <span className="text-[11px] text-slate-500 dark:text-slate-400">
                             Download a pre-formatted MoSPI quiz template
                           </span>
                         </div>
                         <button
                           type="button"
                           onClick={downloadSampleTemplate}
-                          className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold text-slate-700 bg-white border border-slate-200 rounded hover:bg-slate-100 transition-colors cursor-pointer shrink-0"
+                          className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors cursor-pointer shrink-0"
                         >
                           <Download className="w-3.5 h-3.5" />
                           <span>Download Template</span>
@@ -1287,13 +1287,13 @@ export default function AssessmentsPage() {
                   ) : (
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <label className="text-xs font-semibold text-slate-700">
+                        <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">
                           JSON Content
                         </label>
                         <button
                           type="button"
                           onClick={downloadSampleTemplate}
-                          className="text-[11px] text-[#006a61] hover:underline inline-flex items-center gap-1 cursor-pointer"
+                          className="text-[11px] text-[#006a61] dark:text-teal-400 hover:underline inline-flex items-center gap-1 cursor-pointer"
                         >
                           <Download className="w-3 h-3" />
                           <span>Get sample template</span>
@@ -1304,13 +1304,13 @@ export default function AssessmentsPage() {
                         placeholder='Paste your JSON quiz structure here...'
                         value={jsonContent}
                         onChange={(e) => setJsonContent(e.target.value)}
-                        className="w-full font-mono text-[11px] p-3 border border-slate-200 rounded-md focus:outline-none focus:ring-1 focus:ring-[#002045]"
+                        className="w-full font-mono text-[11px] p-3 border border-slate-200 dark:border-slate-700 rounded-md bg-white dark:bg-slate-900 text-slate-800 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#002045] dark:focus:ring-sky-500"
                       />
                       <button
                         type="button"
                         disabled={uploadingQuiz || !jsonContent.trim()}
                         onClick={() => handleProcessUploadedJson(jsonContent)}
-                        className="w-full py-2 bg-[#002045] hover:bg-[#1a365d] text-white text-xs font-semibold rounded-md shadow-2xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-60"
+                        className="w-full py-2 bg-[#002045] dark:bg-sky-600 hover:bg-[#1a365d] dark:hover:bg-sky-700 text-white text-xs font-semibold rounded-md shadow-2xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-60"
                       >
                         {uploadingQuiz ? (
                           <>
@@ -1332,7 +1332,7 @@ export default function AssessmentsPage() {
                       type="button"
                       disabled={uploadingQuiz}
                       onClick={() => setIsUploadModalOpen(false)}
-                      className="px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-100 rounded-md transition-colors cursor-pointer"
+                      className="px-3 py-1.5 text-xs font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-md transition-colors cursor-pointer"
                     >
                       Close
                     </button>

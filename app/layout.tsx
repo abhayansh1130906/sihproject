@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 import { AdminAuthProvider } from "@/context/AdminAuthContext";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,13 +29,40 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#f8f9ff]">
-        <AuthProvider>
-          <AdminAuthProvider>{children}</AdminAuthProvider>
-        </AuthProvider>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                var theme = localStorage.getItem('skillintel_theme');
+                var isDark = theme === 'dark' || (theme === 'system' || !theme) && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (isDark) {
+                  document.documentElement.classList.add('dark');
+                } else {
+                  document.documentElement.classList.remove('dark');
+                }
+                if (localStorage.getItem('skillintel_compact_mode') === 'true') {
+                  document.documentElement.classList.add('compact-mode');
+                }
+                if (localStorage.getItem('skillintel_high_contrast') === 'true') {
+                  document.documentElement.classList.add('high-contrast');
+                }
+              } catch (_) {}
+            `,
+          }}
+        />
+      </head>
+      <body className="min-h-full flex flex-col bg-[#f8f9ff] dark:bg-[#090d16] text-[#0d1c2e] dark:text-slate-100 transition-colors duration-200">
+        <ThemeProvider>
+          <AuthProvider>
+            <AdminAuthProvider>{children}</AdminAuthProvider>
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
 }
+

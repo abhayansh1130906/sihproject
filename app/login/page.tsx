@@ -66,9 +66,9 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8f9ff] flex flex-col justify-between antialiased">
+    <div className="min-h-screen bg-[#f8f9ff] dark:bg-[#090d16] flex flex-col justify-between antialiased transition-colors">
       {/* Top Banner */}
-      <div className="bg-[#002045] text-slate-100 text-[11px] font-medium py-1.5 px-4 text-center tracking-wide border-b border-[#1a365d]/50">
+      <div className="bg-[#002045] dark:bg-[#060c18] text-slate-100 text-[11px] font-medium py-1.5 px-4 text-center tracking-wide border-b border-[#1a365d]/50 dark:border-slate-800">
         <p>
           Government of India • Ministry of Statistics and Programme Implementation (MoSPI) • SIH26101
         </p>
@@ -76,11 +76,11 @@ export default function LoginPage() {
 
       {/* Main Container */}
       <div className="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8">
-        <div className="w-full max-w-md bg-white rounded-xl shadow-[0_4px_24px_rgba(0,32,69,0.06)] border border-slate-200/80 overflow-hidden">
+        <div className="w-full max-w-md bg-white dark:bg-[#0f172a] rounded-xl shadow-[0_4px_24px_rgba(0,32,69,0.06)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.4)] border border-slate-200/80 dark:border-slate-800 overflow-hidden transition-colors">
           {/* Header */}
-          <div className="bg-[#002045] p-6 text-white text-center relative overflow-hidden">
+          <div className="bg-[#002045] dark:bg-[#081326] p-6 text-white text-center relative overflow-hidden border-b border-transparent dark:border-slate-800">
             <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-[#1a365d]/40 pointer-events-none blur-xl"></div>
-            <div className="w-12 h-12 rounded-xl bg-[#1a365d] border border-white/10 mx-auto flex items-center justify-center mb-3 shadow-inner">
+            <div className="w-12 h-12 rounded-xl bg-[#1a365d] dark:bg-slate-800 border border-white/10 mx-auto flex items-center justify-center mb-3 shadow-inner">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 48 48"
@@ -104,7 +104,7 @@ export default function LoginPage() {
               </svg>
             </div>
             <h1 className="text-xl font-bold tracking-tight">SkillIntel</h1>
-            <p className="text-xs text-slate-300 mt-1 font-medium">
+            <p className="text-xs text-slate-300 dark:text-slate-400 mt-1 font-medium">
               Official Statistical Cadre Intelligence & Learning Portal
             </p>
             <div className="inline-flex items-center gap-1.5 mt-3 px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-semibold text-emerald-300 tracking-wide uppercase border border-white/10">
@@ -116,7 +116,7 @@ export default function LoginPage() {
           {/* Form */}
           <div className="p-6 sm:p-8">
             {error && (
-              <div className="mb-5 p-3.5 bg-red-50/90 border border-red-200 rounded-lg flex items-start gap-2.5 text-xs text-red-800">
+              <div className="mb-5 p-3.5 bg-red-50/90 dark:bg-red-950/60 border border-red-200 dark:border-red-900 rounded-lg flex items-start gap-2.5 text-xs text-red-800 dark:text-red-300">
                 <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
                 <div className="flex-1">{error}</div>
               </div>
@@ -124,7 +124,7 @@ export default function LoginPage() {
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
                   Official ID
                 </label>
                 <div className="relative">
@@ -137,13 +137,13 @@ export default function LoginPage() {
                     value={officialId}
                     onChange={(e) => setOfficialId(e.target.value)}
                     placeholder="e.g. OFF001"
-                    className="w-full pl-9 pr-3.5 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#002045] focus:bg-white transition-all text-slate-900"
+                    className="w-full pl-9 pr-3.5 py-2.5 text-sm bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#002045] dark:focus:ring-sky-500 focus:bg-white dark:focus:bg-slate-900 transition-all text-slate-900 dark:text-white"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
                   Password
                 </label>
                 <div className="relative">
@@ -156,7 +156,7 @@ export default function LoginPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter official credentials"
-                    className="w-full pl-9 pr-3.5 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#002045] focus:bg-white transition-all text-slate-900"
+                    className="w-full pl-9 pr-3.5 py-2.5 text-sm bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#002045] dark:focus:ring-sky-500 focus:bg-white dark:focus:bg-slate-900 transition-all text-slate-900 dark:text-white"
                   />
                 </div>
               </div>
@@ -164,7 +164,7 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full mt-2 py-2.5 px-4 bg-[#002045] hover:bg-[#1a365d] text-white text-sm font-semibold rounded-lg shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full mt-2 py-2.5 px-4 bg-[#002045] dark:bg-sky-600 hover:bg-[#1a365d] dark:hover:bg-sky-700 text-white text-sm font-semibold rounded-lg shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>
@@ -181,10 +181,10 @@ export default function LoginPage() {
             </form>
 
             {/* Demo Quick Selector */}
-            <div className="mt-6 pt-5 border-t border-slate-100">
+            <div className="mt-6 pt-5 border-t border-slate-100 dark:border-slate-800">
               <div className="flex items-center justify-between mb-2.5">
-                <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider flex items-center gap-1">
-                  <Sparkles className="w-3 h-3 text-[#006a61]" />
+                <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1">
+                  <Sparkles className="w-3 h-3 text-[#006a61] dark:text-teal-400" />
                   Quick Demo Accounts
                 </span>
                 <span className="text-[10px] text-slate-400">Select to fill ID</span>
@@ -197,14 +197,14 @@ export default function LoginPage() {
                     onClick={() => handleSelectDemo(demo.id)}
                     className={`p-2 text-left rounded-md border text-xs transition-all cursor-pointer ${
                       officialId === demo.id
-                        ? "border-[#002045] bg-[#eff4ff] text-[#002045] font-semibold shadow-xs"
-                        : "border-slate-200 hover:border-slate-300 bg-slate-50 text-slate-700"
+                        ? "border-[#002045] dark:border-sky-400 bg-[#eff4ff] dark:bg-sky-950 text-[#002045] dark:text-sky-300 font-semibold shadow-xs"
+                        : "border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300"
                     }`}
                   >
-                    <div className="font-mono text-[10px] font-bold text-slate-900 truncate">
+                    <div className="font-mono text-[10px] font-bold text-slate-900 dark:text-white truncate">
                       {demo.id}
                     </div>
-                    <div className="text-[11px] font-medium text-slate-600 truncate mt-0.5">
+                    <div className="text-[11px] font-medium text-slate-600 dark:text-slate-400 truncate mt-0.5">
                       {demo.name.split(" ")[0]}
                     </div>
                   </button>
@@ -214,7 +214,7 @@ export default function LoginPage() {
           </div>
 
           {/* Footer note */}
-          <div className="p-3.5 bg-slate-50 border-t border-slate-100 text-center text-[11px] text-slate-500 flex items-center justify-center gap-1.5">
+          <div className="p-3.5 bg-slate-50 dark:bg-slate-900/60 border-t border-slate-100 dark:border-slate-800 text-center text-[11px] text-slate-500 dark:text-slate-400 flex items-center justify-center gap-1.5">
             <Building2 className="w-3.5 h-3.5 text-slate-400" />
             <span>Official Statistical System Cadre Login</span>
           </div>
@@ -222,9 +222,10 @@ export default function LoginPage() {
       </div>
 
       {/* Institutional footer */}
-      <div className="py-3 text-center text-xs text-slate-500">
+      <div className="py-3 text-center text-xs text-slate-500 dark:text-slate-400">
         © {new Date().getFullYear()} Ministry of Statistics and Programme Implementation. All rights reserved.
       </div>
     </div>
   );
 }
+

@@ -166,14 +166,14 @@ export default function LearningHistoryPage() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="p-1.5 rounded-md bg-[#eff4ff] text-[#002045]">
+              <span className="p-1.5 rounded-md bg-[#eff4ff] dark:bg-sky-950 text-[#002045] dark:text-sky-300">
                 <History className="w-5 h-5" />
               </span>
-              <h1 className="text-2xl font-bold tracking-tight text-[#002045]">
+              <h1 className="text-2xl font-bold tracking-tight text-[#002045] dark:text-white">
                 Official Learning History
               </h1>
             </div>
-            <p className="text-xs text-slate-500 mt-1">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
               Recorded capacity-building records across iGOT Karmayogi, NSSTA programmes, and certified assessments
             </p>
           </div>
@@ -181,14 +181,14 @@ export default function LearningHistoryPage() {
           <div className="flex items-center gap-2.5">
             <button
               onClick={fetchHistory}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-[#002045] bg-white border border-slate-200 rounded-md shadow-2xs hover:bg-slate-50 transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-[#002045] dark:text-sky-300 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md shadow-2xs hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer"
             >
               <RefreshCw className="w-3.5 h-3.5" />
               <span>Refresh</span>
             </button>
             <button
               onClick={handleOpenModal}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-white bg-[#002045] hover:bg-[#1a365d] rounded-md shadow-2xs transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-white bg-[#002045] dark:bg-sky-600 hover:bg-[#1a365d] dark:hover:bg-sky-700 rounded-md shadow-2xs transition-colors cursor-pointer"
             >
               <PlusCircle className="w-3.5 h-3.5" />
               <span>Add Training Record</span>
@@ -198,14 +198,14 @@ export default function LearningHistoryPage() {
 
         {/* Success Alert Banner */}
         {successMessage && (
-          <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-lg flex items-center justify-between text-xs text-emerald-800 animate-in fade-in duration-200">
+          <div className="p-4 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 rounded-lg flex items-center justify-between text-xs text-emerald-800 dark:text-emerald-300 animate-in fade-in duration-200">
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
               <span className="font-semibold">{successMessage}</span>
             </div>
             <button
               onClick={() => setSuccessMessage(null)}
-              className="p-1 rounded text-emerald-600 hover:text-emerald-800"
+              className="p-1 rounded text-emerald-600 hover:text-emerald-800 dark:hover:text-emerald-200"
             >
               <X className="w-3.5 h-3.5" />
             </button>
@@ -213,7 +213,7 @@ export default function LearningHistoryPage() {
         )}
 
         {/* Filters and Search Bar */}
-        <div className="bg-white p-4 rounded-xl border border-slate-200/90 shadow-2xs flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="bg-white dark:bg-[#0f172a] p-4 rounded-xl border border-slate-200/90 dark:border-slate-800 shadow-2xs flex flex-col sm:flex-row items-center justify-between gap-4 transition-colors">
           <div className="relative w-full sm:w-80">
             <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
@@ -221,12 +221,12 @@ export default function LearningHistoryPage() {
               placeholder="Search by course title or ID..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#002045] focus:bg-white text-slate-900"
+              className="w-full pl-9 pr-4 py-2 text-xs bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#002045] dark:focus:ring-sky-500 focus:bg-white dark:focus:bg-slate-900 text-slate-900 dark:text-white"
             />
           </div>
 
           <div className="flex items-center gap-2 w-full sm:w-auto">
-            <span className="text-xs font-semibold text-slate-500 flex items-center gap-1 shrink-0">
+            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 flex items-center gap-1 shrink-0">
               <Filter className="w-3.5 h-3.5" />
               Status:
             </span>
@@ -237,8 +237,8 @@ export default function LearningHistoryPage() {
                   onClick={() => setSelectedStatus(status)}
                   className={`px-3 py-1 rounded-md text-xs font-semibold transition-all cursor-pointer ${
                     selectedStatus === status
-                      ? "bg-[#002045] text-white shadow-2xs"
-                      : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                      ? "bg-[#002045] dark:bg-sky-600 text-white shadow-2xs"
+                      : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700"
                   }`}
                 >
                   {status === "ALL"
@@ -253,7 +253,7 @@ export default function LearningHistoryPage() {
         </div>
 
         {/* Learning History Table */}
-        <section className="bg-white rounded-xl border border-slate-200/90 shadow-2xs overflow-hidden">
+        <section className="bg-white dark:bg-[#0f172a] rounded-xl border border-slate-200/90 dark:border-slate-800 shadow-2xs overflow-hidden transition-colors">
           {loading ? (
             <LoadingState message="Loading official learning history records..." />
           ) : error ? (
@@ -274,7 +274,7 @@ export default function LearningHistoryPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="bg-slate-50/80 border-b border-slate-200 text-[11px] font-bold uppercase tracking-wider text-slate-600">
+                  <tr className="bg-slate-50/80 dark:bg-slate-800/60 border-b border-slate-200 dark:border-slate-800 text-[11px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">
                     <th className="py-3 px-4">Course / Training Title</th>
                     <th className="py-3 px-4">Learning Type</th>
                     <th className="py-3 px-4">Resource ID</th>
@@ -284,7 +284,7 @@ export default function LearningHistoryPage() {
                     <th className="py-3 px-4">Source Type</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100 text-xs">
+                <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-xs">
                   {filteredHistory.map((item) => {
                     const isCompleted =
                       item.status.toLowerCase() === "completed";
@@ -292,42 +292,42 @@ export default function LearningHistoryPage() {
                     return (
                       <tr
                         key={item.history_id}
-                        className="hover:bg-slate-50/60 transition-colors"
+                        className="hover:bg-slate-50/60 dark:hover:bg-slate-800/40 transition-colors"
                       >
-                        <td className="py-3.5 px-4 font-semibold text-slate-900 max-w-xs">
+                        <td className="py-3.5 px-4 font-semibold text-slate-900 dark:text-white max-w-xs">
                           {item.resource_title}
                         </td>
-                        <td className="py-3.5 px-4 text-slate-600">
-                          <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[11px] font-medium border border-slate-200">
+                        <td className="py-3.5 px-4 text-slate-600 dark:text-slate-300">
+                          <span className="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-[11px] font-medium border border-slate-200 dark:border-slate-700">
                             {item.learning_type}
                           </span>
                         </td>
-                        <td className="py-3.5 px-4 font-mono text-slate-500 text-[11px]">
+                        <td className="py-3.5 px-4 font-mono text-slate-500 dark:text-slate-400 text-[11px]">
                           {item.resource_id}
                         </td>
                         <td className="py-3.5 px-4">
                           <span
                             className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold ${
                               isCompleted
-                                ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
-                                : "bg-amber-50 text-amber-800 border border-amber-200"
+                                ? "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800"
+                                : "bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800"
                             }`}
                           >
                             {isCompleted ? (
-                              <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                              <CheckCircle2 className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                             ) : (
-                              <Clock className="w-3 h-3 text-amber-600" />
+                              <Clock className="w-3 h-3 text-amber-600 dark:text-amber-400" />
                             )}
                             {item.status}
                           </span>
                         </td>
-                        <td className="py-3.5 px-4 text-slate-600">
+                        <td className="py-3.5 px-4 text-slate-600 dark:text-slate-400">
                           {item.completion_date || "—"}
                         </td>
-                        <td className="py-3.5 px-4 font-semibold text-slate-800">
+                        <td className="py-3.5 px-4 font-semibold text-slate-800 dark:text-slate-200">
                           {item.score !== null ? `${item.score}%` : "—"}
                         </td>
-                        <td className="py-3.5 px-4 text-slate-500 text-[11px]">
+                        <td className="py-3.5 px-4 text-slate-500 dark:text-slate-400 text-[11px]">
                           {item.source_type}
                         </td>
                       </tr>
@@ -341,15 +341,15 @@ export default function LearningHistoryPage() {
 
         {/* Modal: Add Training Record */}
         {isModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in duration-200">
-            <div className="bg-white rounded-xl shadow-xl border border-slate-200 w-full max-w-lg overflow-hidden">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in duration-200">
+            <div className="bg-white dark:bg-[#0f172a] rounded-xl shadow-xl border border-slate-200 dark:border-slate-800 w-full max-w-lg overflow-hidden">
               {/* Modal Header */}
-              <div className="bg-[#002045] text-white p-5 flex items-center justify-between">
+              <div className="bg-[#002045] dark:bg-[#081326] text-white p-5 flex items-center justify-between border-b border-transparent dark:border-slate-800">
                 <div>
                   <h3 className="text-base font-bold">
                     Add Official Training Record
                   </h3>
-                  <p className="text-xs text-slate-300 mt-0.5">
+                  <p className="text-xs text-slate-300 dark:text-slate-400 mt-0.5">
                     Log new capacity building record for official {officialId}
                   </p>
                 </div>
@@ -365,14 +365,14 @@ export default function LearningHistoryPage() {
               {/* Modal Form */}
               <form onSubmit={handleFormSubmit} className="p-6 space-y-4">
                 {formError && (
-                  <div className="p-3 bg-red-50 border border-red-200 rounded-lg flex items-start gap-2 text-xs text-red-800">
+                  <div className="p-3 bg-red-50 dark:bg-red-950/60 border border-red-200 dark:border-red-900 rounded-lg flex items-start gap-2 text-xs text-red-800 dark:text-red-300">
                     <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
                     <span>{formError}</span>
                   </div>
                 )}
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                     Course / Resource Title *
                   </label>
                   <input
@@ -383,13 +383,13 @@ export default function LearningHistoryPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, resource_title: e.target.value })
                     }
-                    className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#002045] focus:bg-white text-slate-900"
+                    className="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#002045] dark:focus:ring-sky-500 focus:bg-white dark:focus:bg-slate-900 text-slate-900 dark:text-white"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                       Resource ID *
                     </label>
                     <input
@@ -400,12 +400,12 @@ export default function LearningHistoryPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, resource_id: e.target.value })
                       }
-                      className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#002045] focus:bg-white text-slate-900 font-mono"
+                      className="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#002045] dark:focus:ring-sky-500 focus:bg-white dark:focus:bg-slate-900 text-slate-900 dark:text-white font-mono"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                       Learning Type *
                     </label>
                     <select
@@ -416,7 +416,7 @@ export default function LearningHistoryPage() {
                           learning_type: e.target.value,
                         })
                       }
-                      className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#002045] focus:bg-white text-slate-900"
+                      className="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#002045] dark:focus:ring-sky-500 focus:bg-white dark:focus:bg-slate-900 text-slate-900 dark:text-white"
                     >
                       <option value="iGOT Course">iGOT Course</option>
                       <option value="NSSTA Programme">NSSTA Programme</option>
@@ -430,7 +430,7 @@ export default function LearningHistoryPage() {
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                       Status *
                     </label>
                     <select
@@ -438,7 +438,7 @@ export default function LearningHistoryPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, status: e.target.value })
                       }
-                      className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#002045] focus:bg-white text-slate-900"
+                      className="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#002045] dark:focus:ring-sky-500 focus:bg-white dark:focus:bg-slate-900 text-slate-900 dark:text-white"
                     >
                       <option value="completed">Completed</option>
                       <option value="in_progress">In Progress</option>
@@ -446,7 +446,7 @@ export default function LearningHistoryPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                       Score (0-100)
                     </label>
                     <input
@@ -461,14 +461,14 @@ export default function LearningHistoryPage() {
                           score: e.target.value ? Number(e.target.value) : null,
                         })
                       }
-                      className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#002045] focus:bg-white text-slate-900"
+                      className="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#002045] dark:focus:ring-sky-500 focus:bg-white dark:focus:bg-slate-900 text-slate-900 dark:text-white"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                       Completion Date
                     </label>
                     <input
@@ -480,12 +480,12 @@ export default function LearningHistoryPage() {
                           completion_date: e.target.value || null,
                         })
                       }
-                      className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#002045] focus:bg-white text-slate-900"
+                      className="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#002045] dark:focus:ring-sky-500 focus:bg-white dark:focus:bg-slate-900 text-slate-900 dark:text-white"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                       Source Type *
                     </label>
                     <input
@@ -496,23 +496,23 @@ export default function LearningHistoryPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, source_type: e.target.value })
                       }
-                      className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#002045] focus:bg-white text-slate-900"
+                      className="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#002045] dark:focus:ring-sky-500 focus:bg-white dark:focus:bg-slate-900 text-slate-900 dark:text-white"
                     />
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-slate-100 flex items-center justify-end gap-2.5">
+                <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-end gap-2.5">
                   <button
                     type="button"
                     onClick={handleCloseModal}
-                    className="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-md transition-colors cursor-pointer"
+                    className="px-4 py-2 text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-md transition-colors cursor-pointer"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="px-4 py-2 text-xs font-semibold text-white bg-[#002045] hover:bg-[#1a365d] rounded-md shadow-2xs transition-colors flex items-center gap-1.5 cursor-pointer disabled:opacity-70"
+                    className="px-4 py-2 text-xs font-semibold text-white bg-[#002045] dark:bg-sky-600 hover:bg-[#1a365d] dark:hover:bg-sky-700 rounded-md shadow-2xs transition-colors flex items-center gap-1.5 cursor-pointer disabled:opacity-70"
                   >
                     {submitting ? (
                       <>
@@ -532,3 +532,4 @@ export default function LearningHistoryPage() {
     </AppShell>
   );
 }
+
