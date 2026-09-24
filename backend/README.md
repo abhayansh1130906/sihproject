@@ -488,6 +488,24 @@ http://127.0.0.1:8000/docs
 
 ---
 
+## Render Deployment
+
+When deploying to **Render**:
+
+1. **Root Directory**: `backend`
+2. **Build Command**:
+   ```bash
+   chmod +x render-build.sh && ./render-build.sh
+   ```
+3. **Start Command**:
+   ```bash
+   uvicorn app.main:app --host 0.0.0.0 --port $PORT
+   ```
+   *(Do NOT use `--reload` in production. Binding to `--host 0.0.0.0 --port $PORT` is required for Render port detection.)*
+
+---
+
+
 ## Current Scope
 
 The current backend provides the foundation for:

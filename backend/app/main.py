@@ -25,16 +25,26 @@ app.include_router(assessments_router)
 app.include_router(assistant_router)
 app.include_router(auth.router)
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
+import os
+
+cors_origins_env = os.getenv("CORS_ORIGINS")
+if cors_origins_env:
+    allowed_origins = [orig.strip() for orig in cors_origins_env.split(",") if orig.strip()]
+else:
+    allowed_origins = [
         "http://localhost:3000",
         "http://127.0.0.1:3000",
-    ],
+    ]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=allowed_origins,
+    allow_origin_regex=r"https?://.*" if not cors_origins_env else None,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 @app.get("/")
 def root():

@@ -1,12 +1,9 @@
 from pathlib import Path
 import json
 
-from sentence_transformers import SentenceTransformer, util
+from sentence_transformers import util
+from app.services.embedding_service import get_embedding_model
 
-
-MODEL_NAME = "all-MiniLM-L6-v2"
-
-model = SentenceTransformer(MODEL_NAME)
 
 CORPUS_PATH = (
     Path(__file__).resolve().parents[2]
@@ -14,37 +11,46 @@ CORPUS_PATH = (
     / "rag_corpus.json"
 )
 
+_CORPUS = None
+_CORPUS_EMBEDDINGS = None
+
 
 def load_rag_corpus() -> list[dict]:
     with open(CORPUS_PATH, "r", encoding="utf-8") as file:
         return json.load(file)
 
 
-def build_corpus_embeddings(
-    corpus: list[dict],
-) -> list[list[float]]:
-
-    documents = [
-        f"{document['title']}\n{document['content']}"
-        for document in corpus
-    ]
-
-    embeddings = model.encode(
-        documents,
-        convert_to_tensor=True,
-    )
-
-    return embeddings
+def get_corpus() -> list[dict]:
+    global _CORPUS
+    if _CORPUS is None:
+        _CORPUS = load_rag_corpus()
+    return _CORPUS
 
 
-CORPUS = load_rag_corpus()
-CORPUS_EMBEDDINGS = build_corpus_embeddings(CORPUS)
+def get_corpus_embeddings():
+    global _CORPUS_EMBEDDINGS
+    if _CORPUS_EMBEDDINGS is None:
+        model = get_embedding_model()
+        corpus = get_corpus()
+        documents = [
+            f"{document['title']}\n{document['content']}"
+            for document in corpus
+        ]
+        _CORPUS_EMBEDDINGS = model.encode(
+            documents,
+            convert_to_tensor=True,
+        )
+    return _CORPUS_EMBEDDINGS
+
 
 
 def search_rag(
     query: str,
     top_k: int = 3,
 ) -> list[dict]:
+    model = get_embedding_model()
+    corpus = get_corpus()
+    corpus_embeddings = get_corpus_embeddings()
 
     query_embedding = model.encode(
         query,
@@ -53,7 +59,7 @@ def search_rag(
 
     similarities = util.cos_sim(
         query_embedding,
-        CORPUS_EMBEDDINGS,
+        corpus_embeddings,
     )[0]
 
     ranked_indices = similarities.argsort(
@@ -63,7 +69,7 @@ def search_rag(
     results = []
 
     for index in ranked_indices:
-        document = CORPUS[index]
+        document = corpus[index]
 
         results.append(
             {
