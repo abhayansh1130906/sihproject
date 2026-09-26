@@ -27,10 +27,11 @@ app.include_router(auth.router)
 
 import os
 
-cors_origins_env = os.getenv("CORS_ORIGINS")
-if cors_origins_env:
-    allowed_origins = [orig.strip() for orig in cors_origins_env.split(",") if orig.strip()]
-else:
+cors_origins_env = os.getenv("CORS_ORIGINS", "")
+allowed_origins = [orig.strip() for orig in cors_origins_env.split(",") if orig.strip()]
+allow_all = "*" in allowed_origins or cors_origins_env == "*"
+
+if not allowed_origins and not allow_all:
     allowed_origins = [
         "http://localhost:3000",
         "http://127.0.0.1:3000",
@@ -38,8 +39,8 @@ else:
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=allowed_origins,
-    allow_origin_regex=r"https?://.*" if not cors_origins_env else None,
+    allow_origins=[] if allow_all else allowed_origins,
+    allow_origin_regex=r".*" if allow_all else r"https?://.*\.vercel\.app.*",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
