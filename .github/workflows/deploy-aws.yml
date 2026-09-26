@@ -1,0 +1,88 @@
+name: Deploy to AWS
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+env:
+  AWS_REGION: us-east-1
+  ECR_REPOSITORY_BACKEND: skillintel-backend
+  ECR_REPOSITORY_FRONTEND: skillintel-frontend
+
+jobs:
+  build-and-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Frontend Dependencies
+        run: npm ci
+
+      - name: Build Next.js
+        run: npm run build
+        env:
+          NEXT_PUBLIC_API_BASE_URL: ""
+          NEXT_PUBLIC_DEMO_LOGIN_PASSWORD: "demopassword"
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Validate Backend Syntax
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8
+          flake8 backend/app --count --select=E9,F63,F7,F82 --show-source --statistics
+
+  build-and-push-ecr:
+    name: Build & Push Docker Images to AWS ECR
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && vars.AWS_ACCOUNT_ID != ''
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build and Push Backend Image
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build -t $REGISTRY/$ECR_REPOSITORY_BACKEND:$IMAGE_TAG -t $REGISTRY/$ECR_REPOSITORY_BACKEND:latest ./backend
+          docker push $REGISTRY/$ECR_REPOSITORY_BACKEND:$IMAGE_TAG
+          docker push $REGISTRY/$ECR_REPOSITORY_BACKEND:latest
+
+      - name: Build and Push Frontend Image
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build \
+            --build-arg NEXT_PUBLIC_API_BASE_URL=${{ vars.NEXT_PUBLIC_API_BASE_URL }} \
+            --build-arg NEXT_PUBLIC_DEMO_LOGIN_PASSWORD=${{ vars.NEXT_PUBLIC_DEMO_LOGIN_PASSWORD }} \
+            -t $REGISTRY/$ECR_REPOSITORY_FRONTEND:$IMAGE_TAG \
+            -t $REGISTRY/$ECR_REPOSITORY_FRONTEND:latest .
+          docker push $REGISTRY/$ECR_REPOSITORY_FRONTEND:$IMAGE_TAG
+          docker push $REGISTRY/$ECR_REPOSITORY_FRONTEND:latest

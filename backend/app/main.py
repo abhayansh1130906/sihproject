@@ -49,3 +49,8 @@ app.add_middleware(
 @app.get("/")
 def root():
     return {"message": "SkillIntel API is running"}
+
+
+@app.get("/health")
+def health():
+    return {"status": "healthy", "service": "skillintel-backend"}

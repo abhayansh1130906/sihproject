@@ -293,3 +293,31 @@ SkillIntel organises competencies across four domains:
 - **Technical** — Python, R, SQL, Data Analytics, GIS, AI, Cloud Computing, etc.
 - **Digital Governance** — Cybersecurity, Data Privacy, Digital Public Infrastructure, etc.
 - **Behavioural & Managerial** — Leadership, Communication, Project Management, etc.
+
+---
+
+## Deployment on AWS
+
+The application is fully containerized and production-ready for AWS deployment (AWS EC2, AWS ECS Fargate, or AWS App Runner).
+
+For detailed step-by-step instructions, see the [AWS Deployment Guide](AWS_DEPLOYMENT_GUIDE.md).
+
+### Quick Start with Docker (Local / EC2)
+
+1. **Configure Environment**:
+   ```bash
+   cp .env.example .env
+   ```
+2. **Run in Production Mode (Nginx reverse proxy on port 80)**:
+   ```bash
+   docker compose -f docker-compose.prod.yml up -d --build
+   ```
+3. **Run in Local Development Mode**:
+   ```bash
+   docker compose up -d --build
+   ```
+4. **Access the application**:
+   - Web App: `http://localhost` (or `http://<EC2_IP>`)
+   - API Docs: `http://localhost/docs` (or `http://<EC2_IP>/docs`)
+   - Healthcheck: `http://localhost/health`
+

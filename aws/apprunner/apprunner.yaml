@@ -1,0 +1,18 @@
+version: 1.0
+runtime: custom
+build:
+  commands:
+    build:
+      - echo "App Runner uses pre-built container image from AWS ECR"
+run:
+  command: /app/entrypoint.sh
+  network:
+    port: 8000
+    env: APP_PORT
+  env:
+    - name: AUTO_SEED
+      value: "true"
+    - name: WEB_CONCURRENCY
+      value: "2"
+    - name: CORS_ORIGINS
+      value: "*"
