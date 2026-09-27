@@ -114,7 +114,7 @@ backend/
 │   └── rag_corpus.json
 │
 ├── scripts/
-│   └── seed_data.py
+│   └── seed_database.py
 │
 ├── .env
 ├── .env.example
@@ -255,7 +255,8 @@ The current prototype:
 
 The current recommendation logic is deterministic.
 
-AI-based semantic ranking and explanation will be integrated later.
+AI-based semantic ranking and explanation can be integrated later if the deployment
+environment supports the additional model dependencies.
 
 ---
 
@@ -421,7 +422,7 @@ The seed script populates:
 Run the seed script with:
 
 ```bash
-python scripts/seed_data.py
+python scripts/seed_database.py
 ```
 
 The prototype data is intended for demonstration and development.
@@ -465,7 +466,7 @@ python -m alembic upgrade head
 ### 5. Seed the database
 
 ```bash
-python scripts/seed_data.py
+python scripts/seed_database.py
 ```
 
 ### 6. Start the FastAPI server
@@ -542,7 +543,8 @@ Embeddings will be used to improve matching between:
 - Learning outcomes
 - Training programmes
 
-The recommendation pipeline will combine structured competency matching with semantic similarity.
+The recommendation pipeline can later combine structured competency matching with
+semantic similarity when model dependencies are enabled.
 
 ### RAG Assistant
 

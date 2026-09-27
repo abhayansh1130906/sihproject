@@ -1,19 +1,18 @@
-import os
-
-from dotenv import load_dotenv
+from functools import lru_cache
 from groq import Groq
 
-load_dotenv()
-
-api_key = os.getenv("GROQ_API_KEY")
-
-client = Groq(api_key=api_key)
+from app.core.config import settings
 
 MODEL_NAME = "openai/gpt-oss-120b"
 
 
+@lru_cache
+def get_client() -> Groq:
+    return Groq(api_key=settings.groq_api_key)
+
+
 def generate_answer(question: str, context: str) -> str:
-    response = client.chat.completions.create(
+    response = get_client().chat.completions.create(
         model=MODEL_NAME,
         messages=[
             {

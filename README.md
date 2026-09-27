@@ -20,7 +20,7 @@ FastAPI Backend (Python)
         ├── PostgreSQL  (via SQLAlchemy + Alembic)
         │
         ├── AI Services
-        │     ├── Embedding Service  (semantic similarity)
+        │     ├── Retrieval Service  (lightweight corpus search)
         │     └── LLM Service        (Groq)
         │
         └── Data Integrations
@@ -77,13 +77,13 @@ sihproject/
 │   │   └── services/             # Business logic
 │   │       ├── competency_gap_service.py
 │   │       ├── recommendation_service.py
-│   │       ├── embedding_service.py
+│   │       ├── retrieval_service.py
 │   │       ├── llm_service.py
-│   │       └── retrieval_service.py
+│   │       └── assessment_generator.py
 │   ├── alembic/                  # Database migration scripts
 │   ├── data/                     # Prototype JSON seed datasets
 │   ├── scripts/
-│   │   └── seed_data.py          # Database seeding script
+│   │   └── seed_database.py      # Database seeding script
 │   ├── requirements.txt
 │   └── README.md                 # Backend-specific documentation
 │
@@ -110,7 +110,7 @@ sihproject/
 
 - **Competency Gap Engine** — deterministic gap calculation (`required_level − current_level`) per role
 - **Recommendation Engine** — matches resources to gaps using competency-to-course/programme mappings
-- **Embedding Service** — semantic similarity for improved resource matching
+- **Retrieval Service** — lightweight matching over the RAG knowledge corpus
 - **RAG Assistant** — retrieval-augmented generation over the SkillIntel knowledge corpus using Groq LLM
 - **Assessment System** — MCQ assessments with scoring and attempt tracking
 - **Demo Authentication** — password-protected demo login for prototype use
@@ -184,7 +184,7 @@ Apply migrations and seed the database:
 
 ```bash
 python -m alembic upgrade head
-python scripts/seed_data.py
+python scripts/seed_database.py
 ```
 
 Start the API server:
