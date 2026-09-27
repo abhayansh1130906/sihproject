@@ -28,18 +28,22 @@ app.include_router(auth.router)
 import os
 
 cors_origins_env = os.getenv("CORS_ORIGINS")
+default_origins = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "https://sihproject-ecru-one.vercel.app",
+]
+
 if cors_origins_env:
-    allowed_origins = [orig.strip() for orig in cors_origins_env.split(",") if orig.strip()]
+    extra_origins = [orig.strip().rstrip("/") for orig in cors_origins_env.split(",") if orig.strip()]
+    allowed_origins = list(dict.fromkeys(default_origins + extra_origins))
 else:
-    allowed_origins = [
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-    ]
+    allowed_origins = default_origins
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=allowed_origins,
-    allow_origin_regex=r"https?://.*" if not cors_origins_env else None,
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
