@@ -1,0 +1,11 @@
+.git
+.github
+.next
+node_modules
+__pycache__
+*.py[cod]
+.env
+.env.*
+!.env.example
+frontend
+stitch-assets
