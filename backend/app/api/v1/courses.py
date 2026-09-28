@@ -17,9 +17,11 @@ router = APIRouter(
     response_model=list[CourseResponse]
 )
 def get_courses(
+    skip: int = 0,
+    limit: int = 100,
     db: Session = Depends(get_db)
 ):
-    return db.query(Course).all()
+    return db.query(Course).offset(skip).limit(limit).all()
 
 
 @router.get(

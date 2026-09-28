@@ -1,31 +1,34 @@
 import io
 import json
-import os
 import re
 from datetime import datetime, timezone
 from uuid import uuid4
 
-from dotenv import load_dotenv
 from groq import Groq
 import pypdf
 from sqlalchemy.orm import Session
 
+from app.core.config import settings
 from app.models.assessment import Assessment
 from app.models.competency import Competency
 from app.models.question import Question
 from app.models.question_option import QuestionOption
 
-load_dotenv()
-
 PRIMARY_MODEL = "openai/gpt-oss-120b"
 FALLBACK_MODEL = "openai/gpt-oss-20b"
 
+# Module-level singleton — created once, reused across all requests.
+_groq_client: Groq | None = None
+
 
 def get_groq_client() -> Groq:
-    api_key = os.getenv("GROQ_API_KEY")
-    if not api_key:
-        raise ValueError("GROQ_API_KEY is not set in environment.")
-    return Groq(api_key=api_key)
+    """Return the module-level Groq client, constructing it on first call."""
+    global _groq_client
+    if _groq_client is None:
+        if not settings.groq_api_key:
+            raise ValueError("GROQ_API_KEY is not set in environment.")
+        _groq_client = Groq(api_key=settings.groq_api_key)
+    return _groq_client
 
 
 def extract_text_from_pdf(file_bytes: bytes, max_pages: int = 25, max_chars: int = 15000) -> str:

@@ -135,9 +135,11 @@ def get_learning_history(
     response_model=list[OfficialResponse]
 )
 def get_officials(
+    skip: int = 0,
+    limit: int = 100,
     db: Session = Depends(get_db)
 ):
-    return db.query(Official).all()
+    return db.query(Official).offset(skip).limit(limit).all()
 
 @router.get(
     "/{official_id}/recommendations",

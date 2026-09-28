@@ -17,13 +17,15 @@ class AssessmentAttempt(Base):
     assessment_id: Mapped[str] = mapped_column(
         String(20),
         ForeignKey("assessments.assessment_id"),
-        nullable=False
+        nullable=False,
+        index=True,
     )
 
     official_id: Mapped[str] = mapped_column(
         String(20),
         ForeignKey("officials.official_id"),
-        nullable=False
+        nullable=False,
+        index=True,
     )
 
     score: Mapped[int] = mapped_column(

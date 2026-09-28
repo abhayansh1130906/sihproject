@@ -17,9 +17,11 @@ router = APIRouter(
     response_model=list[CompetencyResponse]
 )
 def get_competencies(
+    skip: int = 0,
+    limit: int = 100,
     db: Session = Depends(get_db)
 ):
-    return db.query(Competency).all()
+    return db.query(Competency).offset(skip).limit(limit).all()
 
 
 @router.get(

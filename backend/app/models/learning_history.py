@@ -17,7 +17,8 @@ class LearningHistory(Base):
     official_id: Mapped[str] = mapped_column(
         String(20),
         ForeignKey("officials.official_id"),
-        nullable=False
+        nullable=False,
+        index=True,
     )
 
     learning_type: Mapped[str] = mapped_column(

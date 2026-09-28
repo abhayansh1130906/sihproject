@@ -24,6 +24,16 @@ def get_corpus() -> list[dict]:
     return _CORPUS
 
 
+def reload_corpus() -> int:
+    """Force a reload of the RAG corpus from disk, discarding the cached copy.
+
+    Returns the number of documents loaded.
+    """
+    global _CORPUS
+    _CORPUS = load_rag_corpus()
+    return len(_CORPUS)
+
+
 def search_rag(
     query: str,
     top_k: int = 3,

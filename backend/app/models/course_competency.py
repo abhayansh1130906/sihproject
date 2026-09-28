@@ -16,7 +16,8 @@ class CourseCompetency(Base):
     competency_id: Mapped[str] = mapped_column(
         String(20),
         ForeignKey("competencies.competency_id"),
-        primary_key=True
+        primary_key=True,
+        index=True,
     )
 
     mapping_basis: Mapped[str] = mapped_column(

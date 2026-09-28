@@ -17,9 +17,11 @@ router = APIRouter(
     response_model=list[TrainingProgrammeResponse]
 )
 def get_training_programmes(
+    skip: int = 0,
+    limit: int = 100,
     db: Session = Depends(get_db)
 ):
-    return db.query(TrainingProgramme).all()
+    return db.query(TrainingProgramme).offset(skip).limit(limit).all()
 
 
 @router.get(

@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
 from uuid import uuid4
+import asyncio
 
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
 from sqlalchemy.orm import Session
@@ -41,16 +42,18 @@ router = APIRouter(
     response_model=list[AssessmentResponse]
 )
 def get_assessments(
+    skip: int = 0,
+    limit: int = 100,
     db: Session = Depends(get_db)
 ):
-    return db.query(Assessment).order_by(Assessment.created_at.desc()).all()
+    return db.query(Assessment).order_by(Assessment.created_at.desc()).offset(skip).limit(limit).all()
 
 
 @router.post(
     "/generate",
     response_model=AssessmentResponse
 )
-def generate_assessment(
+async def generate_assessment(
     request: GenerateQuizRequest,
     db: Session = Depends(get_db)
 ):
@@ -62,7 +65,9 @@ def generate_assessment(
         )
 
     try:
-        quiz_data = generate_quiz_content(
+        # Offload blocking Groq call to a thread so the event loop stays free
+        quiz_data = await asyncio.to_thread(
+            generate_quiz_content,
             competency_name=competency.name,
             competency_domain=competency.domain,
             competency_description=competency.description,
@@ -128,7 +133,9 @@ async def generate_assessment_from_pdf(
     clean_topic = topic.strip() if topic and topic.strip() else f"Material from {file.filename}"
 
     try:
-        quiz_data = generate_quiz_content(
+        # Offload blocking Groq call to a thread so the event loop stays free
+        quiz_data = await asyncio.to_thread(
+            generate_quiz_content,
             competency_name=competency.name,
             competency_domain=competency.domain,
             competency_description=competency.description,

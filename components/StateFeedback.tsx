@@ -8,7 +8,7 @@ export interface LoadingStateProps {
   className?: string;
 }
 
-export function LoadingState({
+export const LoadingState = React.memo(function LoadingState({
   message = "Loading data...",
   className = "py-12",
 }: LoadingStateProps) {
@@ -22,7 +22,7 @@ export function LoadingState({
       </span>
     </div>
   );
-}
+});
 
 export interface ErrorStateProps {
   message?: string;
@@ -30,7 +30,7 @@ export interface ErrorStateProps {
   className?: string;
 }
 
-export function ErrorState({
+export const ErrorState = React.memo(function ErrorState({
   message = "Unable to load data. Please try again.",
   onRetry,
   className = "py-8 px-6",
@@ -58,7 +58,7 @@ export function ErrorState({
       )}
     </div>
   );
-}
+});
 
 export interface EmptyStateProps {
   title?: string;
@@ -69,7 +69,7 @@ export interface EmptyStateProps {
   className?: string;
 }
 
-export function EmptyState({
+export const EmptyState = React.memo(function EmptyState({
   title = "No data available",
   message = "There are currently no records to display.",
   actionLabel,
@@ -97,5 +97,4 @@ export function EmptyState({
       )}
     </div>
   );
-}
-
+});

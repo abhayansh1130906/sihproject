@@ -15,7 +15,8 @@ class QuestionOption(Base):
     question_id: Mapped[str] = mapped_column(
         String(20),
         ForeignKey("questions.question_id"),
-        nullable=False
+        nullable=False,
+        index=True,
     )
 
     option_text: Mapped[str] = mapped_column(

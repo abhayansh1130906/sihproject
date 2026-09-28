@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
 import Link from "next/link";
 import AppShell from "@/components/AppShell";
 import { useAuth } from "@/context/AuthContext";
@@ -55,7 +55,7 @@ export default function DashboardPage() {
   const [selectedDomain, setSelectedDomain] = useState<string>("ALL");
   const [hoveredGapId, setHoveredGapId] = useState<string | null>(null);
 
-  const fetchProfile = async () => {
+  const fetchProfile = useCallback(async () => {
     if (!officialId) return;
     setLoadingProfile(true);
     setProfileError(null);
@@ -67,9 +67,9 @@ export default function DashboardPage() {
     } finally {
       setLoadingProfile(false);
     }
-  };
+  }, [officialId]);
 
-  const fetchCompetencies = async () => {
+  const fetchCompetencies = useCallback(async () => {
     if (!officialId) return;
     setLoadingCompetencies(true);
     setCompetenciesError(null);
@@ -83,9 +83,9 @@ export default function DashboardPage() {
     } finally {
       setLoadingCompetencies(false);
     }
-  };
+  }, [officialId]);
 
-  const fetchGaps = async () => {
+  const fetchGaps = useCallback(async () => {
     if (!officialId) return;
     setLoadingGaps(true);
     setGapsError(null);
@@ -97,19 +97,18 @@ export default function DashboardPage() {
     } finally {
       setLoadingGaps(false);
     }
-  };
+  }, [officialId]);
 
-  const refreshAll = () => {
-    fetchProfile();
-    fetchCompetencies();
-    fetchGaps();
-  };
+  const refreshAll = useCallback(() => {
+    // Fire all three requests in parallel — no artificial serialization.
+    void Promise.all([fetchProfile(), fetchCompetencies(), fetchGaps()]);
+  }, [fetchProfile, fetchCompetencies, fetchGaps]);
 
   useEffect(() => {
     if (officialId) {
       refreshAll();
     }
-  }, [officialId]);
+  }, [officialId, refreshAll]);
 
   // Extract unique domains for filter tabs
   const availableDomains = useMemo(() => {

@@ -1,4 +1,4 @@
-from sqlalchemy import Integer, String, Text, ForeignKey
+from sqlalchemy import Index, Integer, String, Text, ForeignKey
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -15,7 +15,8 @@ class Official(Base):
     role_id: Mapped[str] = mapped_column(
         String(20),
         ForeignKey("roles.role_id"),
-        nullable=False
+        nullable=False,
+        index=True,
     )
 
     name: Mapped[str] = mapped_column(

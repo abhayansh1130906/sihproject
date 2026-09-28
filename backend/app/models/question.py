@@ -15,7 +15,8 @@ class Question(Base):
     assessment_id: Mapped[str] = mapped_column(
         String(20),
         ForeignKey("assessments.assessment_id"),
-        nullable=False
+        nullable=False,
+        index=True,
     )
 
     question_text: Mapped[str] = mapped_column(

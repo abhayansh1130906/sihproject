@@ -116,26 +116,53 @@ export default function LearningHistoryPage() {
     setSubmitting(true);
     setFormError(null);
 
+    // ── Optimistic update ────────────────────────────────────────────────────
+    // Build a temporary placeholder record with a recognisable temp ID so we
+    // can remove it precisely if the API call fails.
+    const tempId = `TEMP-${Date.now()}`;
+    const optimisticRecord: LearningHistoryResponse = {
+      history_id: tempId,
+      learning_type: formData.learning_type,
+      resource_id: formData.resource_id.trim(),
+      resource_title: formData.resource_title.trim(),
+      status: formData.status,
+      completion_date: formData.completion_date ?? null,
+      score: formData.score ? Number(formData.score) : null,
+      source_type: formData.source_type,
+    };
+
+    // Close modal immediately and show record at top of table
+    setHistoryRecords((prev) => [optimisticRecord, ...prev]);
+    handleCloseModal();
+
     try {
-      await api.createLearningRecord(officialId, {
+      const saved = await api.createLearningRecord(officialId, {
         ...formData,
         resource_id: formData.resource_id.trim(),
         resource_title: formData.resource_title.trim(),
         score: formData.score ? Number(formData.score) : null,
       });
 
+      // Replace the temp record with the real server-persisted one
+      setHistoryRecords((prev) =>
+        prev.map((r) => (r.history_id === tempId ? saved : r))
+      );
+
       setSuccessMessage(
         `Successfully added "${formData.resource_title}" to learning dossier!`
       );
-      handleCloseModal();
-      // Refetch history immediately
-      await fetchHistory();
 
       // Clear success banner after 5s
       setTimeout(() => {
         setSuccessMessage(null);
       }, 5000);
     } catch (err: any) {
+      // Roll back — remove the optimistic record
+      setHistoryRecords((prev) =>
+        prev.filter((r) => r.history_id !== tempId)
+      );
+      // Re-open modal with the data the user entered so nothing is lost
+      setIsModalOpen(true);
       setFormError(
         err?.message || "Failed to submit training record. Please try again."
       );

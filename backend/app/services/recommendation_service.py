@@ -1,6 +1,5 @@
 from sqlalchemy.orm import Session
 
-from app.models.competency import Competency
 from app.models.course import Course
 from app.models.course_competency import CourseCompetency
 from app.models.learning_history import LearningHistory
@@ -25,11 +24,9 @@ def get_recommendations(
     if not gaps:
         return []
 
-    recommendations = []
-
     completed_resources = {
-        history.resource_id
-        for history in db.query(LearningHistory)
+        resource_id
+        for (resource_id,) in db.query(LearningHistory.resource_id)
         .filter(
             LearningHistory.official_id == official_id,
             LearningHistory.status == "completed"
@@ -37,85 +34,67 @@ def get_recommendations(
         .all()
     }
 
-    for gap in gaps:
-        competency_id = gap["competency_id"]
-        gap_value = gap["gap"]
+    gaps_by_competency = {gap["competency_id"]: gap for gap in gaps}
+    competency_ids = list(gaps_by_competency)
+    recommendations = []
 
-        competency = db.get(
-            Competency,
-            competency_id
-        )
+    course_rows = (
+        db.query(Course, CourseCompetency.competency_id)
+        .join(CourseCompetency, Course.course_id == CourseCompetency.course_id)
+        .filter(CourseCompetency.competency_id.in_(competency_ids))
+        .all()
+    )
 
-        if not competency:
+    for course, competency_id in course_rows:
+        if course.course_id in completed_resources:
             continue
-
-        course_rows = (
-            db.query(Course)
-            .join(
-                CourseCompetency,
-                Course.course_id == CourseCompetency.course_id
-            )
-            .filter(
-                CourseCompetency.competency_id == competency_id
-            )
-            .all()
+        gap = gaps_by_competency[competency_id]
+        recommendations.append(
+            {
+                "resource_id": course.course_id,
+                "resource_type": "iGOT",
+                "title": course.title,
+                "competency_id": competency_id,
+                "competency_name": gap["competency_name"],
+                "gap": gap["gap"],
+                "reason": (
+                    f"Recommended because it is mapped to "
+                    f"{gap['competency_name']}, where the current "
+                    f"competency level is below the required level."
+                ),
+                "source_url": course.source_url,
+            }
         )
 
-        for course in course_rows:
-
-            if course.course_id in completed_resources:
-                continue
-
-            recommendations.append(
-                {
-                    "resource_id": course.course_id,
-                    "resource_type": "iGOT",
-                    "title": course.title,
-                    "competency_id": competency_id,
-                    "competency_name": competency.name,
-                    "gap": gap_value,
-                    "reason": (
-                        f"Recommended because it is mapped to "
-                        f"{competency.name}, where the current "
-                        f"competency level is below the required level."
-                    ),
-                    "source_url": course.source_url,
-                }
-            )
-
-        training_rows = (
-            db.query(TrainingProgramme)
-            .join(
-                TrainingCompetency,
-                TrainingProgramme.training_id
-                == TrainingCompetency.training_id
-            )
-            .filter(
-                TrainingCompetency.competency_id == competency_id
-            )
-            .all()
+    training_rows = (
+        db.query(TrainingProgramme, TrainingCompetency.competency_id)
+        .join(
+            TrainingCompetency,
+            TrainingProgramme.training_id == TrainingCompetency.training_id,
         )
+        .filter(TrainingCompetency.competency_id.in_(competency_ids))
+        .all()
+    )
 
-        for training in training_rows:
-
-            if training.training_id in completed_resources:
-                continue
-
-            recommendations.append(
-                {
-                    "resource_id": training.training_id,
-                    "resource_type": "NSSTA",
-                    "title": training.title,
-                    "competency_id": competency_id,
-                    "competency_name": competency.name,
-                    "gap": gap_value,
-                    "reason": (
-                        f"Recommended because it is mapped to "
-                        f"{competency.name}, where the current "
-                        f"competency level is below the required level."
-                    ),
-                    "source_url": training.source_url,
-                }
-            )
+    for training, competency_id in training_rows:
+        if training.training_id in completed_resources:
+            continue
+        gap = gaps_by_competency[competency_id]
+        recommendations.append(
+            {
+                "resource_id": training.training_id,
+                "resource_type": "NSSTA",
+                "title": training.title,
+                "competency_id": competency_id,
+                "competency_name": gap["competency_name"],
+                "gap": gap["gap"],
+                "reason": (
+                    f"Recommended because it is mapped to "
+                    f"{gap['competency_name']}, where the current "
+                    f"competency level is below the required level."
+                ),
+                "source_url": training.source_url,
+            }
+        )
 
     return recommendations

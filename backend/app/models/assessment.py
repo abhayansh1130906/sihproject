@@ -27,7 +27,8 @@ class Assessment(Base):
     competency_id: Mapped[str] = mapped_column(
         String(20),
         ForeignKey("competencies.competency_id"),
-        nullable=False
+        nullable=False,
+        index=True,
     )
 
     source_type: Mapped[str] = mapped_column(
